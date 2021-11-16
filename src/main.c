@@ -17,7 +17,7 @@ int main()
 
 	const GLsizei nPoints = 500;
 	GLfloat (*coord)[2] = malloc(sizeof(coord[0])*nPoints);
-#if 0 // put 1 for random polygon
+#if 1 // put 1 for random polygon
 	random_polygon(coord, nPoints, 4);
 #else
 	random_points(coord, nPoints);
