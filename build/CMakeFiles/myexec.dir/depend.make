@@ -12,6 +12,8 @@ CMakeFiles/myexec.dir/src/main.c.o: ../deps/BOV/deps/glad/include/KHR/khrplatfor
 CMakeFiles/myexec.dir/src/main.c.o: ../deps/BOV/deps/glad/include/glad/glad.h
 CMakeFiles/myexec.dir/src/main.c.o: ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
 CMakeFiles/myexec.dir/src/main.c.o: ../deps/BOV/include/BOV.h
+CMakeFiles/myexec.dir/src/main.c.o: ../src/delaunay.h
 CMakeFiles/myexec.dir/src/main.c.o: ../src/inputs.h
 CMakeFiles/myexec.dir/src/main.c.o: ../src/main.c
+CMakeFiles/myexec.dir/src/main.c.o: ../src/utils.h
 
