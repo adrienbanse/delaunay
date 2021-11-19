@@ -15,5 +15,5 @@ CMakeFiles/myexec.dir/src/main.c.o: ../deps/BOV/include/BOV.h
 CMakeFiles/myexec.dir/src/main.c.o: ../src/delaunay.h
 CMakeFiles/myexec.dir/src/main.c.o: ../src/inputs.h
 CMakeFiles/myexec.dir/src/main.c.o: ../src/main.c
-CMakeFiles/myexec.dir/src/main.c.o: ../src/utils.h
+CMakeFiles/myexec.dir/src/main.c.o: ../src/mesh.h
 
