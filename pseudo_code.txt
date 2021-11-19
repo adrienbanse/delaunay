@@ -1,0 +1,37 @@
+From "Computational Geometry: Algorithms and Applications", Mark de Berg, Otfried Cheong, Marc van Kreveld, Mark Overmars
+Legend : (* Comment *)
+
+Algorithm DelaunayTriangulation(P)
+Input. A set P of n+1 points in the plane
+Output. A Delaunay triangulation of P 
+1. Let p0 be the rightmost among the points with the largest y-coordinate
+2. Let p-1, p-2 be two points sufficiently far away and such that P is contained in the triangle (p0, p-1, p-2)
+3. Initialize T as the triangulation containing the single triangle (p0, p-1, p-2)
+4. Compute a random permutation p1, p2, ..., pn of P \ {p0}
+5. For r <- 1 to n
+6.      do (* Insert pr into T : *)
+7.          Find a triangle (pi, pj, pk) in T containing pr 
+8.          if pr lies in the interior of the triangle (pi, pj, pk)
+9.              then    Add edges from pr to the three vertices of (pi, pj, pk), splitting it into three 
+                        triangles
+10.                     LegalizeEdge(pr, (pi, pj), T)
+11.                     LegalizeEdge(pr, (pj, pk), T)
+12.                     LegalizeEdge(pr, (pi, pk), T)
+13.             else    (* pr lies on an edge of (pi, pj, pk), say (pi, pj) *)
+14.                     Add edges from pr to pk and to the third vertex pl of the other triangle that is 
+                        incident to (pi, pj), splitting the two triangles incident to (pi, pj) into four
+                        triangles
+15.                     LegalizeEdge(pr, (pi, pl), T)
+16.                     LegalizeEdge(pr, (pl, pj), T)
+17.                     LegalizeEdge(pr, (pj, pk), T)
+18.                     LegalizeEdge(pr, (pk, pi), T)
+19. Discard p-1 and p-2 with all their incident edges from T
+20. Return T 
+
+Algorithm LegalizeEdge(pr, (pi, pj), T)
+1. (* The point being inserted is pr, and (pi, pj) is the edge of T that may need to be flipped *)
+2. if (pi, pj) is illegal
+3.      then    Let (pi, pj, pk) be the triangle adjacent to (pr, pi, pj) along (pi, pj)
+4.              (* Flip (pi, pj) *) Replace (pi, pj) with (pr, pk)
+5.              LegalizeEdge(pr, (pi, pk), T)
+6.              LegalizeEdge(pr, (pk, pj), T)

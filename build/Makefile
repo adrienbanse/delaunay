@@ -279,6 +279,33 @@ glad/fast:
 	$(MAKE) -f deps/BOV/deps/glad/CMakeFiles/glad.dir/build.make deps/BOV/deps/glad/CMakeFiles/glad.dir/build
 .PHONY : glad/fast
 
+src/delaunay.o: src/delaunay.c.o
+
+.PHONY : src/delaunay.o
+
+# target to build an object file
+src/delaunay.c.o:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/delaunay.c.o
+.PHONY : src/delaunay.c.o
+
+src/delaunay.i: src/delaunay.c.i
+
+.PHONY : src/delaunay.i
+
+# target to preprocess a source file
+src/delaunay.c.i:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/delaunay.c.i
+.PHONY : src/delaunay.c.i
+
+src/delaunay.s: src/delaunay.c.s
+
+.PHONY : src/delaunay.s
+
+# target to generate assembly for a file
+src/delaunay.c.s:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/delaunay.c.s
+.PHONY : src/delaunay.c.s
+
 src/inputs.o: src/inputs.c.o
 
 .PHONY : src/inputs.o
@@ -333,6 +360,33 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/mesh.o: src/mesh.c.o
+
+.PHONY : src/mesh.o
+
+# target to build an object file
+src/mesh.c.o:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/mesh.c.o
+.PHONY : src/mesh.c.o
+
+src/mesh.i: src/mesh.c.i
+
+.PHONY : src/mesh.i
+
+# target to preprocess a source file
+src/mesh.c.i:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/mesh.c.i
+.PHONY : src/mesh.c.i
+
+src/mesh.s: src/mesh.c.s
+
+.PHONY : src/mesh.s
+
+# target to generate assembly for a file
+src/mesh.c.s:
+	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/mesh.c.s
+.PHONY : src/mesh.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -354,12 +408,18 @@ help:
 	@echo "... shaderIncludes"
 	@echo "... glfw"
 	@echo "... glad"
+	@echo "... src/delaunay.o"
+	@echo "... src/delaunay.i"
+	@echo "... src/delaunay.s"
 	@echo "... src/inputs.o"
 	@echo "... src/inputs.i"
 	@echo "... src/inputs.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/mesh.o"
+	@echo "... src/mesh.i"
+	@echo "... src/mesh.s"
 .PHONY : help
 
 

@@ -73,7 +73,7 @@ CMakeFiles/myexec.dir/all: deps/BOV/deps/glfw/src/CMakeFiles/glfw.dir/all
 CMakeFiles/myexec.dir/all: deps/BOV/deps/glad/CMakeFiles/glad.dir/all
 	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/depend
 	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=33,34,35 "Built target myexec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=33,34,35,36,37 "Built target myexec"
 .PHONY : CMakeFiles/myexec.dir/all
 
 # Include target in all.
@@ -83,7 +83,7 @@ all: CMakeFiles/myexec.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/myexec.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" 35
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" 37
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/myexec.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" 0
 .PHONY : CMakeFiles/myexec.dir/rule
@@ -230,7 +230,7 @@ deps/BOV/CMakeFiles/text_style.dir/all: deps/BOV/deps/glfw/src/CMakeFiles/glfw.d
 deps/BOV/CMakeFiles/text_style.dir/all: deps/BOV/deps/glad/CMakeFiles/glad.dir/all
 	$(MAKE) -f deps/BOV/CMakeFiles/text_style.dir/build.make deps/BOV/CMakeFiles/text_style.dir/depend
 	$(MAKE) -f deps/BOV/CMakeFiles/text_style.dir/build.make deps/BOV/CMakeFiles/text_style.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=48,49 "Built target text_style"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=50,51 "Built target text_style"
 .PHONY : deps/BOV/CMakeFiles/text_style.dir/all
 
 # Include target in all.
@@ -386,7 +386,7 @@ deps/BOV/CMakeFiles/triangles.dir/all: deps/BOV/deps/glfw/src/CMakeFiles/glfw.di
 deps/BOV/CMakeFiles/triangles.dir/all: deps/BOV/deps/glad/CMakeFiles/glad.dir/all
 	$(MAKE) -f deps/BOV/CMakeFiles/triangles.dir/build.make deps/BOV/CMakeFiles/triangles.dir/depend
 	$(MAKE) -f deps/BOV/CMakeFiles/triangles.dir/build.make deps/BOV/CMakeFiles/triangles.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=50,51 "Built target triangles"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=52,53 "Built target triangles"
 .PHONY : deps/BOV/CMakeFiles/triangles.dir/all
 
 # Include target in all.
@@ -501,7 +501,7 @@ clean: deps/BOV/CMakeFiles/animation.dir/clean
 deps/BOV/CMakeFiles/shaderIncludes.dir/all:
 	$(MAKE) -f deps/BOV/CMakeFiles/shaderIncludes.dir/build.make deps/BOV/CMakeFiles/shaderIncludes.dir/depend
 	$(MAKE) -f deps/BOV/CMakeFiles/shaderIncludes.dir/build.make deps/BOV/CMakeFiles/shaderIncludes.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=36,37,38,39,40,41,42,43,44,45,46,47 "Built target shaderIncludes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" --progress-num=38,39,40,41,42,43,44,45,46,47,48,49 "Built target shaderIncludes"
 .PHONY : deps/BOV/CMakeFiles/shaderIncludes.dir/all
 
 # Build rule for subdir invocation for target.

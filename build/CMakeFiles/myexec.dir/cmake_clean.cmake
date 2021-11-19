@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/myexec.dir/src/main.c.o"
   "CMakeFiles/myexec.dir/src/inputs.c.o"
+  "CMakeFiles/myexec.dir/src/mesh.c.o"
+  "CMakeFiles/myexec.dir/src/delaunay.c.o"
   "bin/myexec.pdb"
   "bin/myexec"
 )
