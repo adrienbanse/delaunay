@@ -109,12 +109,22 @@ math.h
 -
 
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/main.c
+stdio.h
+-
 stdlib.h
 -
 inputs.h
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/inputs.h
 delaunay.h
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/delaunay.h
+
+/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/mesh.c
+mesh.h
+/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/mesh.h
+stdio.h
+-
+stdlib.h
+-
 
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/mesh.h
 

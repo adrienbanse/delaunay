@@ -14,14 +14,29 @@ struct Triangle{
 };
 
 struct Vertex{
-    Triangle *root;             // incident face
+    Triangle *root;             // any incident face
     Point *p;                   // corresponding point
 };
 
 struct Mesh{
     Triangle **t_list;          // list of triangles
-    Vertex **v_list;            // list of vertices
 };
+
+/* TODO */
+void is_illegal(Vertex* p_i, Vertex* p_j, Mesh* mesh);
+
+/* TODO */
+Triangle** adjacent_triangles(Vertex* p_i, Vertex* p_j);
+
+
+
+
+
+
+
+
+
+
 
 // typedef struct Point Point;
 // typedef struct HalfEdge HalfEdge;
