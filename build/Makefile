@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named myexec
+# Target rules for targets named delaunay
 
 # Build rule for target.
-myexec: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 myexec
-.PHONY : myexec
+delaunay: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 delaunay
+.PHONY : delaunay
 
 # fast build rule for target.
-myexec/fast:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/build
-.PHONY : myexec/fast
+delaunay/fast:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/build
+.PHONY : delaunay/fast
 
 #=============================================================================
 # Target rules for targets named hello_world
@@ -285,7 +285,7 @@ src/delaunay.o: src/delaunay.c.o
 
 # target to build an object file
 src/delaunay.c.o:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/delaunay.c.o
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/delaunay.c.o
 .PHONY : src/delaunay.c.o
 
 src/delaunay.i: src/delaunay.c.i
@@ -294,7 +294,7 @@ src/delaunay.i: src/delaunay.c.i
 
 # target to preprocess a source file
 src/delaunay.c.i:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/delaunay.c.i
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/delaunay.c.i
 .PHONY : src/delaunay.c.i
 
 src/delaunay.s: src/delaunay.c.s
@@ -303,7 +303,7 @@ src/delaunay.s: src/delaunay.c.s
 
 # target to generate assembly for a file
 src/delaunay.c.s:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/delaunay.c.s
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/delaunay.c.s
 .PHONY : src/delaunay.c.s
 
 src/inputs.o: src/inputs.c.o
@@ -312,7 +312,7 @@ src/inputs.o: src/inputs.c.o
 
 # target to build an object file
 src/inputs.c.o:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/inputs.c.o
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/inputs.c.o
 .PHONY : src/inputs.c.o
 
 src/inputs.i: src/inputs.c.i
@@ -321,7 +321,7 @@ src/inputs.i: src/inputs.c.i
 
 # target to preprocess a source file
 src/inputs.c.i:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/inputs.c.i
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/inputs.c.i
 .PHONY : src/inputs.c.i
 
 src/inputs.s: src/inputs.c.s
@@ -330,7 +330,7 @@ src/inputs.s: src/inputs.c.s
 
 # target to generate assembly for a file
 src/inputs.c.s:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/inputs.c.s
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/inputs.c.s
 .PHONY : src/inputs.c.s
 
 src/main.o: src/main.c.o
@@ -339,7 +339,7 @@ src/main.o: src/main.c.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/main.c.o
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -348,7 +348,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/main.c.i
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -357,7 +357,7 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/main.c.s
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/main.c.s
 .PHONY : src/main.c.s
 
 src/mesh.o: src/mesh.c.o
@@ -366,7 +366,7 @@ src/mesh.o: src/mesh.c.o
 
 # target to build an object file
 src/mesh.c.o:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/mesh.c.o
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/mesh.c.o
 .PHONY : src/mesh.c.o
 
 src/mesh.i: src/mesh.c.i
@@ -375,7 +375,7 @@ src/mesh.i: src/mesh.c.i
 
 # target to preprocess a source file
 src/mesh.c.i:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/mesh.c.i
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/mesh.c.i
 .PHONY : src/mesh.c.i
 
 src/mesh.s: src/mesh.c.s
@@ -384,7 +384,7 @@ src/mesh.s: src/mesh.c.s
 
 # target to generate assembly for a file
 src/mesh.c.s:
-	$(MAKE) -f CMakeFiles/myexec.dir/build.make CMakeFiles/myexec.dir/src/mesh.c.s
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/mesh.c.s
 .PHONY : src/mesh.c.s
 
 # Help Target
@@ -395,7 +395,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... myexec"
+	@echo "... delaunay"
 	@echo "... hello_world"
 	@echo "... koch_snowflake"
 	@echo "... text_style"
