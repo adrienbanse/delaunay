@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/delaunay.dir/src/inputs.c.o"
   "CMakeFiles/delaunay.dir/src/mesh.c.o"
   "CMakeFiles/delaunay.dir/src/delaunay.c.o"
+  "CMakeFiles/delaunay.dir/src/visualize.c.o"
   "bin/delaunay.pdb"
   "bin/delaunay"
 )

@@ -387,6 +387,33 @@ src/mesh.c.s:
 	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/mesh.c.s
 .PHONY : src/mesh.c.s
 
+src/visualize.o: src/visualize.c.o
+
+.PHONY : src/visualize.o
+
+# target to build an object file
+src/visualize.c.o:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.o
+.PHONY : src/visualize.c.o
+
+src/visualize.i: src/visualize.c.i
+
+.PHONY : src/visualize.i
+
+# target to preprocess a source file
+src/visualize.c.i:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.i
+.PHONY : src/visualize.c.i
+
+src/visualize.s: src/visualize.c.s
+
+.PHONY : src/visualize.s
+
+# target to generate assembly for a file
+src/visualize.c.s:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.s
+.PHONY : src/visualize.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -420,6 +447,9 @@ help:
 	@echo "... src/mesh.o"
 	@echo "... src/mesh.i"
 	@echo "... src/mesh.s"
+	@echo "... src/visualize.o"
+	@echo "... src/visualize.i"
+	@echo "... src/visualize.s"
 .PHONY : help
 
 

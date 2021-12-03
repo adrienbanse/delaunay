@@ -92,19 +92,9 @@ glad/glad.h
 GLFW/glfw3.h
 -
 
-/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/delaunay.c
-delaunay.h
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/delaunay.h
-stdlib.h
--
-stdio.h
--
-float.h
--
-
-/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/delaunay.h
-mesh.h
-/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/mesh.h
+visualize.h
+/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/visualize.h
 
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/inputs.h
 BOV.h
@@ -124,9 +114,9 @@ inputs.h
 delaunay.h
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/delaunay.h
 
-/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/mesh.c
-mesh.h
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/mesh.h
 
+/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/visualize.h
+mesh.h
 /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/src/mesh.h
 

@@ -35,11 +35,13 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
         n_edges = 0;
         // find a triangle with p into it
         for (j=0; j<*n_triangles; j++){
-            if (complete[j]) continue;
+            // if (complete[j]) continue;
             float* p1 = point_list[triangle_list[j].p1];
             float* p2 = point_list[triangle_list[j].p2];
             float* p3 = point_list[triangle_list[j].p3];
             inside = is_in_circum_circle(p, p1, p2, p3, &x_c, &y_c, &r);
+
+            // TODO : here, visualize circles
 
             if (x_c < p[0] && (p[0]-x_c)*(p[0]-x_c) > r) complete[j] = 1;
             if (inside){
@@ -78,12 +80,6 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
                     edges[k].p1 = -1;
                     edges[k].p2 = -1;
                 }
-                if (edges[j].p1 == edges[k].p1 && edges[j].p2 == edges[k].p2){
-                    edges[j].p1 = -1;
-                    edges[j].p2 = -1;
-                    edges[k].p1 = -1;
-                    edges[k].p2 = -1;
-                }
             }
         }
 
@@ -114,6 +110,12 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
 
     free(complete);
     free(edges);
+
+    if (VERBOSE) printf("Number of triangles : %d\n", *n_triangles);
+
+    /* Visualization */
+    if (VISUALIZE_FINAL) draw_final(point_list, n_points, triangle_list, *n_triangles);
+    
     return(0);
 }
 
