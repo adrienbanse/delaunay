@@ -8,8 +8,8 @@ int main(){
     /* Initialization */
     const int seed = (int) time(NULL);
 	srand(seed);
-    const int n_points = 10;
-	float (*point_list)[2] = malloc(sizeof(point_list[0]) * n_points);
+    const int n_points = 100;
+	float (*point_list)[2] = malloc(sizeof(point_list[0]) * (n_points + 3));
     if (point_list==NULL) return EXIT_FAILURE;
 
     float min[2] = {-1, -1};
