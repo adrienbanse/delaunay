@@ -9,15 +9,8 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
     int n_triangles_max = 4 * n_points;
     int n_edges_max = 200;
 
-    int* complete = (int*) malloc(n_triangles_max * sizeof(int));
-    if (complete == NULL){
-        free(complete);
-        return(1);
-    }
-
     Edge* edges = (Edge*) malloc(n_edges_max * sizeof(Edge));
     if (edges == NULL){
-        free(complete);
         free(edges);
         return(1);
     }
@@ -28,29 +21,32 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
     /* TRIANGULATION */
     construct_super_triangle(point_list, n_points, triangle_list);
     *n_triangles = 1;
-    complete[0] = 0;
 
     for (i=0; i<n_points; i++){
         float* p = point_list[i];
         n_edges = 0;
         // find a triangle with p into it
         for (j=0; j<*n_triangles; j++){
-            // if (complete[j]) continue;
             float* p1 = point_list[triangle_list[j].p1];
             float* p2 = point_list[triangle_list[j].p2];
             float* p3 = point_list[triangle_list[j].p3];
             inside = is_in_circum_circle(p, p1, p2, p3, &x_c, &y_c, &r);
 
-            // TODO : here, visualize circles
-
-            if (x_c < p[0] && (p[0]-x_c)*(p[0]-x_c) > r) complete[j] = 1;
             if (inside){
+                if (VISUALIZE_CIRCLES) draw_inter(point_list, 
+                                                  n_points, 
+                                                  triangle_list, 
+                                                  *n_triangles, 
+                                                  x_c, 
+                                                  y_c, 
+                                                  r, 
+                                                  SMOOTH);
+
                 // re-allocate memory for edges if needed
                 if (n_edges + 3 >= n_edges_max){
                     n_edges_max += 100;
                     edges = realloc(edges, n_edges_max * sizeof(Edge));
                     if (edges == NULL){
-                        free(complete);
                         free(edges);
                         return(2);
                     }
@@ -65,7 +61,6 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
                 n_edges += 3;
                 // remove triangle
                 triangle_list[j] = triangle_list[*n_triangles - 1];
-                complete[j] = complete[*n_triangles - 1];
                 (*n_triangles)--;
                 j--;
             }
@@ -87,14 +82,12 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
         for (j=0; j<n_edges; j++){
             if (edges[j].p1 < 0 || edges[j].p2 < 0) continue;
             if (*n_triangles >= n_triangles_max){
-                free(complete);
                 free(edges);
                 return(3);
             }
             triangle_list[*n_triangles].p1 = edges[j].p1;
             triangle_list[*n_triangles].p2 = edges[j].p2;
             triangle_list[*n_triangles].p3 = i;
-            complete[*n_triangles] = 0;
             (*n_triangles)++;
         }
     }
@@ -108,7 +101,6 @@ int bowyer_watson(float point_list[][2], int n_points, Triangle* triangle_list, 
         }
     }
 
-    free(complete);
     free(edges);
 
     if (VERBOSE) printf("Number of triangles : %d\n", *n_triangles);

@@ -1,8 +1,11 @@
 #include "visualize.h"
 
-#define MARGIN 20
+#define MARGIN 3
+#define SMOOTH 2000
+
+
 #define VISUALIZE_FINAL 1
-#define VISUALIZE_CIRCLES 0 // TODO
+#define VISUALIZE_CIRCLES 0
 #define VERBOSE 0
 #define RANDOM 0 // TODO
 
