@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk  
 
 C_DEFINES = 
 
-C_INCLUDES = -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/deps/BOV/include" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/deps/BOV/src" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/deps/BOV/shaderIncludes" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/deps/BOV/deps/glad/include" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/deps/BOV/deps/glfw/include" 
+C_INCLUDES = -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/include" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/src" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/deps/BOV/shaderIncludes" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/deps/glad/include" -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/deps/glfw/include" 
 

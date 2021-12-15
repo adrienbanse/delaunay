@@ -6,5 +6,5 @@ C_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk
 
 C_DEFINES = 
 
-C_INCLUDES = -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/deps/BOV/deps/glad/include" 
+C_INCLUDES = -I"/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/deps/glad/include" 
 

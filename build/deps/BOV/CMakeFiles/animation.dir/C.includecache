@@ -92,9 +92,9 @@ glad/glad.h
 GLFW/glfw3.h
 -
 
-/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/deps/BOV/examples/animation.c
+/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/examples/animation.c
 BOV.h
-/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/deps/BOV/examples/BOV.h
+/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/examples/BOV.h
 math.h
 -
 

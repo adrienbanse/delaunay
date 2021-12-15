@@ -48,10 +48,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project"
+CMAKE_SOURCE_DIR = "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build"
+CMAKE_BINARY_DIR = "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -279,33 +279,6 @@ glad/fast:
 	$(MAKE) -f deps/BOV/deps/glad/CMakeFiles/glad.dir/build.make deps/BOV/deps/glad/CMakeFiles/glad.dir/build
 .PHONY : glad/fast
 
-src/delaunay.o: src/delaunay.c.o
-
-.PHONY : src/delaunay.o
-
-# target to build an object file
-src/delaunay.c.o:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/delaunay.c.o
-.PHONY : src/delaunay.c.o
-
-src/delaunay.i: src/delaunay.c.i
-
-.PHONY : src/delaunay.i
-
-# target to preprocess a source file
-src/delaunay.c.i:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/delaunay.c.i
-.PHONY : src/delaunay.c.i
-
-src/delaunay.s: src/delaunay.c.s
-
-.PHONY : src/delaunay.s
-
-# target to generate assembly for a file
-src/delaunay.c.s:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/delaunay.c.s
-.PHONY : src/delaunay.c.s
-
 src/inputs.o: src/inputs.c.o
 
 .PHONY : src/inputs.o
@@ -360,60 +333,6 @@ src/main.c.s:
 	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/mesh.o: src/mesh.c.o
-
-.PHONY : src/mesh.o
-
-# target to build an object file
-src/mesh.c.o:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/mesh.c.o
-.PHONY : src/mesh.c.o
-
-src/mesh.i: src/mesh.c.i
-
-.PHONY : src/mesh.i
-
-# target to preprocess a source file
-src/mesh.c.i:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/mesh.c.i
-.PHONY : src/mesh.c.i
-
-src/mesh.s: src/mesh.c.s
-
-.PHONY : src/mesh.s
-
-# target to generate assembly for a file
-src/mesh.c.s:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/mesh.c.s
-.PHONY : src/mesh.c.s
-
-src/visualize.o: src/visualize.c.o
-
-.PHONY : src/visualize.o
-
-# target to build an object file
-src/visualize.c.o:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.o
-.PHONY : src/visualize.c.o
-
-src/visualize.i: src/visualize.c.i
-
-.PHONY : src/visualize.i
-
-# target to preprocess a source file
-src/visualize.c.i:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.i
-.PHONY : src/visualize.c.i
-
-src/visualize.s: src/visualize.c.s
-
-.PHONY : src/visualize.s
-
-# target to generate assembly for a file
-src/visualize.c.s:
-	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.s
-.PHONY : src/visualize.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -435,21 +354,12 @@ help:
 	@echo "... shaderIncludes"
 	@echo "... glfw"
 	@echo "... glad"
-	@echo "... src/delaunay.o"
-	@echo "... src/delaunay.i"
-	@echo "... src/delaunay.s"
 	@echo "... src/inputs.o"
 	@echo "... src/inputs.i"
 	@echo "... src/inputs.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/mesh.o"
-	@echo "... src/mesh.i"
-	@echo "... src/mesh.s"
-	@echo "... src/visualize.o"
-	@echo "... src/visualize.i"
-	@echo "... src/visualize.s"
 .PHONY : help
 
 
