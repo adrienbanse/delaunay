@@ -28,12 +28,6 @@ CMakeFiles/delaunay.dir/src/main.c.o
  /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
  /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
 CMakeFiles/delaunay.dir/src/mesh.c.o
- ../deps/BOV/deps/glad/include/KHR/khrplatform.h
- ../deps/BOV/deps/glad/include/glad/glad.h
- ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
- ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
 CMakeFiles/delaunay.dir/src/utils.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h

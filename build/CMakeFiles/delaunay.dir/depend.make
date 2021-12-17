@@ -27,12 +27,6 @@ CMakeFiles/delaunay.dir/src/main.c.o: ../src/main.c
 CMakeFiles/delaunay.dir/src/main.c.o: ../src/mesh.h
 CMakeFiles/delaunay.dir/src/main.c.o: ../src/utils.h
 
-CMakeFiles/delaunay.dir/src/mesh.c.o: ../deps/BOV/deps/glad/include/KHR/khrplatform.h
-CMakeFiles/delaunay.dir/src/mesh.c.o: ../deps/BOV/deps/glad/include/glad/glad.h
-CMakeFiles/delaunay.dir/src/mesh.c.o: ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
-CMakeFiles/delaunay.dir/src/mesh.c.o: ../deps/BOV/include/BOV.h
-CMakeFiles/delaunay.dir/src/mesh.c.o: ../src/mesh.c
-CMakeFiles/delaunay.dir/src/mesh.c.o: ../src/mesh.h
 
 CMakeFiles/delaunay.dir/src/utils.c.o: ../deps/BOV/deps/glad/include/KHR/khrplatform.h
 CMakeFiles/delaunay.dir/src/utils.c.o: ../deps/BOV/deps/glad/include/glad/glad.h

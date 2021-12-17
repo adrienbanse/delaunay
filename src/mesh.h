@@ -4,21 +4,32 @@ typedef struct Edge Edge;
 typedef struct Mesh Mesh;
 
 struct Mesh{
-    Edge* edge_list;
-    GLsizei n_edges, n_edges_max;
+    GLfloat (*points)[2];
+    GLsizei n_points, n_edges, n_edges_max;
+    Edge** edge_list;
 };
 
 struct Edge{
-   int src;
-   int dst;
-   Edge* next;
-   Edge* prev;
-   Edge* sym;
+   GLsizei src, dst;
+   int deleted;
+   Edge *next, *prev, *sym;
 };
 
-int initialize_mesh(Mesh* mesh, GLsizei n_edges_max);
-void make_edge(Mesh* mesh, int src, int dst);
+// memory
+void initialize_mesh(Mesh *mesh, GLfloat points[][2], GLsizei n_points, GLsizei n_edges_max);
+void free_mesh(Mesh *mesh);
+
+// topological functions
+Edge* make_edge(Mesh* mesh, int src, int dst);
+Edge* connect(Mesh* mesh, Edge* a, Edge* b);
+void delete_edge(Edge* e);
 void splice(Edge* a, Edge* b);
-int right_of(GLfloat p[2], GLfloat src[2], GLfloat dst[2]);
-int left_of(GLfloat p[2], GLfloat src[2], GLfloat dst[2]);
-void connect(Mesh* mesh, Edge a, Edge b);
+void clean_mesh(Mesh* mesh);
+
+// geometric functions
+int right_of(Mesh* mesh, GLsizei p_id, Edge* e);
+int left_of(Mesh* mesh, GLsizei p_id, Edge* e);
+int in_circle(Mesh *mesh, GLsizei a_id, GLsizei b_id, GLsizei c_id, GLsizei d_id);
+
+// visualization
+void visualize_mesh(Mesh* mesh, GLfloat points[][2], GLsizei n_points);
