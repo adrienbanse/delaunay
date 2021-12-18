@@ -4,27 +4,38 @@
 #include "inputs.h"
 #include "delaunay.h"
 
+#define EMST 1
 #define VISUALIZE 0
+#define UNIFORM 1
 
 int main(){
     int seed = (int) time(NULL);
 	srand(seed);
 
-    const GLsizei n_points = 300;
+    const GLsizei n_points = 10;
 	GLfloat (*point_list)[2] = malloc(sizeof(point_list[0]) * n_points);
+
+#if UNIFORM
     float min[2] = {-0.8, -0.8};
     float max[2] = {0.8, 0.8};
     random_uniform_points(point_list, n_points, min, max);
-
-    Mesh *mesh = (Mesh *)malloc(sizeof(Mesh));
-    initialize_mesh(mesh, point_list, n_points, 2 * n_points);
-    delaunay(mesh);
-
-#if VISUALIZE
-    visualize_mesh(mesh, point_list, n_points); // leaks in here
+#else
+    random_points(point_list, n_points);
 #endif
 
-    free_mesh(mesh);
-    free(point_list);
+    Mesh *d_mesh = (Mesh *)malloc(sizeof(Mesh));
+    initialize_mesh(d_mesh, point_list, n_points, 2 * n_points);
+    delaunay(d_mesh);
+
+#if EMST
+    emst(d_mesh);
+#endif
+
+#if VISUALIZE 
+    visualize_mesh_simple(d_mesh);
+#endif
+
+    free_mesh(d_mesh);
+
     return EXIT_SUCCESS;
 }

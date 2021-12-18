@@ -1,3 +1,3 @@
 #include "BOV.h"
 
-int compare_points(const void *pointer_a, const void *pointer_b);
+GLfloat* find_circum_center(GLfloat p[2], GLfloat q[2], GLfloat r[2]);

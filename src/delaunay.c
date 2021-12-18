@@ -117,3 +117,46 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
     res[0] = ldo;    
     res[1] = rdo;    
 }
+
+void emst(Mesh *mesh){
+    compute_edge_lengths(mesh);
+    kruskal(mesh);
+}
+
+void kruskal(Mesh* mesh){
+    UFNode *node_list = (UFNode *)malloc(mesh->n_points * sizeof(UFNode));
+    Edge **edge_list_ordered = (Edge **)malloc(mesh->n_edges * sizeof(Edge*));
+    memcpy(edge_list_ordered, mesh->edge_list, mesh->n_edges * sizeof(Edge*));
+    qsort(edge_list_ordered, mesh->n_edges, sizeof(Edge *), compare_edge_lengths);
+    
+    GLsizei i;
+    UFNode *u, *v, *find_u, *find_v;
+    Edge* e;
+
+    for (i = 0; i < mesh->n_points; i++){
+        make_set(&node_list[i]);
+    }
+    for (i = 0; i < mesh->n_edges; i++){
+        e = edge_list_ordered[i];
+        u = &node_list[e->src];
+        v = &node_list[e->dst];
+        find_u = find(u);
+        find_v = find(v);
+        if (find_u != find_v){
+            e->in_tree = 1; // add to the tree
+            e->sym->in_tree = 1;
+            union_find(find_u, find_v);
+        }
+    }
+
+    free(node_list);
+    free(edge_list_ordered);
+}
+
+
+int compare_points(const void *pointer_a, const void *pointer_b){
+    GLfloat (*a)[2] = (GLfloat(*)[2]) pointer_a;
+    GLfloat (*b)[2] = (GLfloat(*)[2]) pointer_b;
+    GLfloat res = ((*a)[0] - (*b)[0] != 0 ? (*a)[0] - (*b)[0] : (*a)[1] - (*b)[1]);
+    return (res > 0) - (res < 0);
+}
