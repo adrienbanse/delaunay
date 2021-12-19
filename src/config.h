@@ -37,6 +37,9 @@
 #define TEXT_POSITION       (GLfloat[2]){TEXT_X_POSITION, TEXT_Y_POSITION}
 #define TITLE_FINAL_MODE    "Fast Delaunay (result)"
 #define TITLE_HISTORY_MODE  "Fast Delaunay (history mode)"
+#define DELAUNAY_TXT        (GLubyte[]){"Delaunay (divide and conquer)"}
+#define EMST_TXT            (GLubyte[]){"Euclidian Minimum Spanning Tree (Kruskal)"}
+#define DONE_TXT            (GLubyte[]){"Done"}
 
 // constants
 #define BLACK_COLOR         (GLfloat[4]){0.0, 0.0, 0.0, 1.0}

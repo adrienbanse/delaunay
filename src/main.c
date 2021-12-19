@@ -13,6 +13,8 @@
 /* 
 TODO :  - voronoi ?
         - comments in code
+        - clean main
+        - README.md (end) with GIFs
 */
 
 int main(){

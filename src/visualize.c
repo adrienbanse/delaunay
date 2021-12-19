@@ -179,22 +179,16 @@ void visualize_history(Mesh *mesh){
     bov_points_t *points_draw = bov_points_new(points, mesh->n_points, GL_DYNAMIC_DRAW);
 	bov_points_set_color(points_draw, POINT_COLOR);
 
-    bov_text_t* delaunay_txt = bov_text_new(
-		(GLubyte[]){"Delaunay (divide and conquer)"},
-		GL_DYNAMIC_DRAW);
-    bov_text_t* emst_txt = bov_text_new(
-		(GLubyte[]){"EMST (Kruskal)"},
-		GL_DYNAMIC_DRAW);
-    bov_text_t* done_txt = bov_text_new(
-		(GLubyte[]){"Done"},
-		GL_DYNAMIC_DRAW);
+    bov_text_t* delaunay_txt = bov_text_new(DELAUNAY_TXT, GL_DYNAMIC_DRAW);
+    bov_text_t* emst_txt = bov_text_new(EMST_TXT, GL_DYNAMIC_DRAW);
+    bov_text_t* done_txt = bov_text_new(DONE_TXT, GL_DYNAMIC_DRAW);
 
     bov_text_set_pos(delaunay_txt, TEXT_POSITION);
     bov_text_set_pos(emst_txt, TEXT_POSITION);
     bov_text_set_color(emst_txt, EMST_EDGE_COLOR);
     bov_text_set_pos(done_txt, TEXT_POSITION);
 
-    int done = 0, mode = 0;
+    int mode = 0;
     while(!bov_window_should_close(window)){
 		wtime = bov_window_get_time(window);
         if (wtime > N_SECOND * hst->length){
