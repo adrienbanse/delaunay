@@ -1,3 +1,22 @@
+/*H**********************************************************************
+
+* FILENAME:         mesh.c       
+*
+* DESCRIPTION:      File containing implementation of methods associated
+*                   to meshes, i.e. memory, topological, and geometrical
+*                   functions
+*                   
+* NOTES:            Imlpementations are inspired from their Python
+*                   equivalent in
+*                   https://github.com/alexbaryzhikov/triangulation
+*
+* AUTHORS:          Adrien Banse and Diego de Crombrugghe   
+* DATE:             23 December 2021
+* CONTEXT:          LMECA2170 course project at UCLouvain
+*                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
+*
+*H*/
+
 #include "mesh.h"
 
 void initialize_mesh(Mesh *mesh, GLfloat points[][2], GLsizei n_points, GLsizei n_edges_max){
@@ -22,8 +41,6 @@ void free_mesh(Mesh *mesh){
     free(mesh->points);
     free(mesh);
 }
-
-
 
 Edge* make_edge(Mesh *mesh, int src, int dst){
     if (mesh->n_edges + 2 >= mesh->n_edges_max){

@@ -1,3 +1,17 @@
+/*H**********************************************************************
+* FILENAME:         utils.c  
+*
+* DESCRIPTION:      Utils
+*                   
+* NOTES:            /
+*
+* AUTHORS:          Adrien Banse and Diego de Crombrugghe   
+* DATE:             23 December 2021
+* CONTEXT:          LMECA2170 course project at UCLouvain
+*                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
+*
+*H*/
+
 #include "utils.h"
 
 void error(char msg[]){
@@ -5,14 +19,12 @@ void error(char msg[]){
     exit(EXIT_FAILURE);
 }  
 
-// https://www.geeksforgeeks.org/program-find-circumcenter-triangle-2/
 void line_from_points(GLfloat p[2], GLfloat q[2], GLfloat *a, GLfloat *b, GLfloat *c){
     *a = q[1] - p[1];
     *b = p[0] - q[0];
     *c = *a * (p[0]) + *b * p[1];
 }
 
-// https://www.geeksforgeeks.org/program-find-circumcenter-triangle-2/
 void perpendicular_bisector_from_line(GLfloat p[2], GLfloat q[2], GLfloat *a, GLfloat *b, GLfloat *c){
     GLfloat mid_point[2] = {(p[0] + q[0]) / 2, (p[1] + q[1]) / 2};
     *c = - *b * (mid_point[0]) + *a * (mid_point[1]);
@@ -21,7 +33,6 @@ void perpendicular_bisector_from_line(GLfloat p[2], GLfloat q[2], GLfloat *a, GL
     *b = temp;
 }
 
-// https://www.geeksforgeeks.org/program-find-circumcenter-triangle-2/
 GLfloat* line_line_intersection(GLfloat a1, GLfloat b1, GLfloat c1, GLfloat a2, GLfloat b2, GLfloat c2){
     GLfloat det = a1 * b2 - a2 * b1;
     GLfloat* res = malloc(2 * sizeof(GLfloat));
@@ -36,7 +47,6 @@ GLfloat* line_line_intersection(GLfloat a1, GLfloat b1, GLfloat c1, GLfloat a2, 
     return res;
 }
 
-// https://www.geeksforgeeks.org/program-find-circumcenter-triangle-2/
 GLfloat* find_circum_center(GLfloat p[2], GLfloat q[2], GLfloat r[2]){
     GLfloat a, b, c, e, f, g;
     line_from_points(p, q, &a, &b, &c);

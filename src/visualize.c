@@ -1,6 +1,19 @@
+/*H**********************************************************************
+* FILENAME :        visualize.c          
+*
+* DESCRIPTION :     Delaunay triangulation and EMST visualization 
+*                   library based on BOV library
+*       
+* NOTES :           /
+*
+* AUTHORS :         Adrien Banse and Diego de Crombrugghe   
+* DATE :            23 December 2021
+* CONTEXT:          LMECA2170 course project at UCLouvain
+*                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
+*
+*H*/
+
 #include "visualize.h"
-
-
 
 void initialize_history(History *hst){
     hst->edge_lists = (Edge**)malloc(sizeof(Edge *));
@@ -91,7 +104,11 @@ void read_history(History *hst){
 }
 
 void clean_history(History *hst){
+
+#if ERASE_AFTER
     erase_history();
+#endif
+
     Edge **edge_list = hst->edge_lists;
     for (GLsizei i = 0; i < hst->length; i++)
         free(edge_list[i]);
@@ -198,5 +215,3 @@ void visualize_history(Mesh *mesh){
     bov_window_delete(window);
     clean_history(hst);
 }
-
-

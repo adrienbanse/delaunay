@@ -1,3 +1,19 @@
+/*H**********************************************************************
+* FILENAME:         emst.c
+*
+* DESCRIPTION:      Euclidian Minimum Spanning Tree implementation 
+*                   
+* NOTES:            Based on Union-Find data structure implementation 
+*                   of Kruskal's algorithm applied to Delaunay trian-
+*                   gulation's output
+*
+* AUTHORS:          Adrien Banse and Diego de Crombrugghe   
+* DATE:             23 December 2021
+* CONTEXT:          LMECA2170 course project at UCLouvain
+*                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
+*
+*H*/
+
 #include "emst.h"
 
 void make_set(UFNode *node){

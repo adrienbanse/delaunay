@@ -8,14 +8,13 @@
 #include "emst.h"
 #include "visualize.h"
 #include "delaunay.h"
+#include "config.h"
 
 /* 
 TODO :  - verify EMST correctness
         - voronoi ?
-        - defensive
+        - comments in code
 */
-
-#define UNIFORM 1
 
 int main(){
     int seed = (int) time(NULL);
@@ -39,12 +38,19 @@ int main(){
         error("Delaunay mesh structure cannot be malloc'd");
 
     initialize_mesh(d_mesh, point_list, n_points, 2 * n_points);
-
     delaunay(d_mesh);
-    emst(d_mesh);
 
+#if EMST
+    emst(d_mesh);
+#endif
+
+#if HISTORY_MODE
     visualize_history(d_mesh);
-    // visualize_mesh_simple(d_mesh);
+#endif
+
+#if FINAL_MODE
+    visualize_mesh_simple(d_mesh);
+#endif
 
     free_mesh(d_mesh);
 

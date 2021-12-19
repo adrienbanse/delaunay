@@ -1,3 +1,20 @@
+/*H**********************************************************************
+* FILENAME :        delaunay.c             
+*
+* DESCRIPTION :     Divide-and-conquer algorithm for Delaunay triangu-
+*                   lation. 
+*       
+* NOTES :           The functions are highly inspired from its Python 
+*                   equivalent in 
+*                   https://github.com/alexbaryzhikov/triangulation
+*
+* AUTHORS :         Adrien Banse and Diego de Crombrugghe   
+* DATE :            23 December 2021
+* CONTEXT:          LMECA2170 course project at UCLouvain
+*                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
+*
+*H*/
+
 #include "delaunay.h"
 
 void delaunay(Mesh *mesh){
