@@ -19,7 +19,9 @@
 
 void delaunay(Mesh *mesh){
     qsort(mesh->points, mesh->n_points, sizeof(mesh->points[0]), compare_points);
+#if HISTORY_MODE
     erase_history(); // in case of
+#endif
     triangulate(mesh, 0, mesh->n_points, NULL);
     clean_mesh(mesh);
 }
@@ -27,7 +29,9 @@ void delaunay(Mesh *mesh){
 void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
     if ((end - begin) == 2){
         Edge *a = make_edge(mesh, begin + 0, begin + 1);
+#if HISTORY_MODE
         checkpoint_history(mesh);
+#endif
         if (res == NULL)
             return;
         res[0] = a;
@@ -42,7 +46,9 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
 
         if (right_of(mesh, begin + 2, a)){
             connect(mesh, b, a);
+#if HISTORY_MODE
             checkpoint_history(mesh);
+#endif
             if (res == NULL)
                 return;
             res[0] = a;
@@ -51,15 +57,18 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
         }
         if (left_of(mesh, begin + 2, a)){
             Edge *c = connect(mesh, b, a);
+#if HISTORY_MODE
             checkpoint_history(mesh);
+#endif
             if (res == NULL)
                 return;
             res[0] = c->sym;
             res[1] = c; 
             return;
         }
-
+#if HISTORY_MODE
         checkpoint_history(mesh);
+#endif
         if (res == NULL)
             return;
         res[0] = a;
@@ -139,8 +148,9 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
         else
             base = connect(mesh, base->sym, rcand->sym);
     }
-
+#if HISTORY_MODE
     checkpoint_history(mesh);
+#endif
     if (res == NULL)
         return;
     res[0] = ldo;    

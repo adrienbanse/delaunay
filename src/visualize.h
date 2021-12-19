@@ -17,8 +17,8 @@
 #define __VISUALIZE_H__
 
 #include "BOV.h"
-#include "mesh.h"
 #include "utils.h"
+#include "mesh.h"
 #include "config.h"
 
 typedef struct History History;

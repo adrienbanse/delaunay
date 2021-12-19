@@ -11,8 +11,7 @@
 #include "config.h"
 
 /* 
-TODO :  - verify EMST correctness
-        - voronoi ?
+TODO :  - voronoi ?
         - comments in code
 */
 
@@ -20,15 +19,14 @@ int main(){
     int seed = (int) time(NULL);
 	srand(seed);
 
-    const GLsizei n_points = 25;
-	GLfloat (*point_list)[2] = malloc(sizeof(point_list[0]) * n_points);
+	GLfloat (*point_list)[2] = malloc(sizeof(point_list[0]) * N_POINTS);
     if (point_list == NULL)
         error("List of points cannot be malloc'd");
 
 #if UNIFORM
     float min[2] = {-0.8, -0.8};
     float max[2] = {0.8, 0.8};
-    random_uniform_points(point_list, n_points, min, max);
+    random_uniform_points(point_list, N_POINTS, min, max);
 #else
     random_points(point_list, n_points);
 #endif
@@ -37,7 +35,7 @@ int main(){
     if (d_mesh == NULL)
         error("Delaunay mesh structure cannot be malloc'd");
 
-    initialize_mesh(d_mesh, point_list, n_points, 2 * n_points);
+    initialize_mesh(d_mesh, point_list, N_POINTS, 2 * N_POINTS);
     delaunay(d_mesh);
 
 #if EMST
@@ -53,6 +51,5 @@ int main(){
 #endif
 
     free_mesh(d_mesh);
-
     exit(EXIT_SUCCESS);
 }

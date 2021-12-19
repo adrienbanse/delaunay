@@ -45,7 +45,6 @@ void emst(Mesh *mesh){
     mesh->n_deleted = 0;
     compute_edge_lengths(mesh);
     kruskal(mesh);
-    checkpoint_history(mesh);
 }
 
 void kruskal(Mesh* mesh){
@@ -76,6 +75,9 @@ void kruskal(Mesh* mesh){
         if (find_u != find_v){
             e->in_tree = 1; // add to the tree
             e->sym->in_tree = 1;
+#if HISTORY_MODE
+            checkpoint_history(mesh);
+#endif
             union_find(find_u, find_v);
         }
     }
@@ -98,6 +100,6 @@ void compute_edge_lengths(Mesh* mesh){
 int compare_edge_lengths(const void *double_edge_pointer_a, const void *double_edge_pointer_b){
     Edge **a = (Edge **) double_edge_pointer_a;
     Edge **b = (Edge **) double_edge_pointer_b;
-    GLfloat res = (*a)->length > (*b)->length;
+    GLfloat res = (*a)->length - (*b)->length;
     return (res > 0) - (res < 0);
 }

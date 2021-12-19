@@ -126,13 +126,10 @@ void visualize_mesh_simple(Mesh *mesh){
     bov_points_t *edge_draw;
     GLfloat (*edge_points)[2] = malloc(sizeof(points[0]) * 2);
 
-    bov_window_t* window = bov_window_new(800, 800, "Fast Delaunay");
-	// bov_window_set_color(window, (GLfloat[]){0.9f, 0.85f, 0.8f, 1.0f});
-    bov_window_set_color(window, (GLfloat[]){1, 1, 1, 1});
+    bov_window_t* window = bov_window_new(800, 800, TITLE_FINAL_MODE);
 
     bov_points_t *points_draw = bov_points_new(points, n_points, GL_STATIC_DRAW);
-	bov_points_set_color(points_draw, (GLfloat[4]) {0.0, 0.0, 0.0, 1.0});
-	bov_points_set_outline_color(points_draw, (GLfloat[4]) {0.3, 0.12, 0.0, 0.25});
+	bov_points_set_color(points_draw, POINT_COLOR);
 
 	while(!bov_window_should_close(window)){
         for (i = 0; i < mesh->n_edges; i++){
@@ -144,14 +141,17 @@ void visualize_mesh_simple(Mesh *mesh){
             edge_points[1][0] = points[e->dst][0];
             edge_points[1][1] = points[e->dst][1];
             edge_draw = bov_points_new(edge_points, 2, GL_STATIC_DRAW);
-            bov_points_set_width(edge_draw, 0.0012);
-            if (e->in_tree)
-                bov_points_set_color(edge_draw, (GLfloat[4]) {1.0, 0.0, 0.0, 1.0});
+            if (e->in_tree){
+                bov_points_set_width(edge_draw, EMST_EDGE_WIDTH);
+                bov_points_set_color(edge_draw, EMST_EDGE_COLOR);
+            }
+            else
+                bov_points_set_width(edge_draw, EDGE_WIDTH);
             bov_lines_draw(window, edge_draw, 0, BOV_TILL_END);
             bov_points_delete(edge_draw);
         }
 
-        bov_points_set_width(points_draw, 0.009);
+        bov_points_set_width(points_draw, POINT_WIDTH);
 		bov_points_draw(window, points_draw, 0, BOV_TILL_END);
 
 		bov_window_update(window);
@@ -167,7 +167,7 @@ void visualize_history(Mesh *mesh){
     initialize_history(hst);
     read_history(hst);
 
-    bov_window_t* window = bov_window_new(800, 800, "Fast Delaunay EVOLUTION");
+    bov_window_t* window = bov_window_new(800, 800, TITLE_HISTORY_MODE);
     GLfloat (*points)[2] = mesh->points;
     double wtime;
     GLsizei i, history_idx, n_edges_history;
@@ -177,16 +177,39 @@ void visualize_history(Mesh *mesh){
     bov_points_t *edge_draw;
 
     bov_points_t *points_draw = bov_points_new(points, mesh->n_points, GL_DYNAMIC_DRAW);
-	bov_points_set_color(points_draw, (GLfloat[4]) {0.0, 0.0, 0.0, 1.0});
-	bov_points_set_outline_color(points_draw, (GLfloat[4]) {0.3, 0.12, 0.0, 0.25});
+	bov_points_set_color(points_draw, POINT_COLOR);
 
-    int done = 0;
+    bov_text_t* delaunay_txt = bov_text_new(
+		(GLubyte[]){"Delaunay (divide and conquer)"},
+		GL_DYNAMIC_DRAW);
+    bov_text_t* emst_txt = bov_text_new(
+		(GLubyte[]){"EMST (Kruskal)"},
+		GL_DYNAMIC_DRAW);
+    bov_text_t* done_txt = bov_text_new(
+		(GLubyte[]){"Done"},
+		GL_DYNAMIC_DRAW);
+
+    bov_text_set_pos(delaunay_txt, TEXT_POSITION);
+    bov_text_set_pos(emst_txt, TEXT_POSITION);
+    bov_text_set_color(emst_txt, EMST_EDGE_COLOR);
+    bov_text_set_pos(done_txt, TEXT_POSITION);
+
+    int done = 0, mode = 0;
     while(!bov_window_should_close(window)){
 		wtime = bov_window_get_time(window);
-        if (wtime > N_SECOND * hst->length)
+        if (wtime > N_SECOND * hst->length){
             history_idx = hst->length - 1;
+            mode = 2;
+        }
         else
             history_idx = (GLsizei) (wtime / N_SECOND) % hst->length;
+
+        if (mode == 0)
+            bov_text_draw(window, delaunay_txt);
+        else if (mode == 1)
+            bov_text_draw(window, emst_txt);
+        else
+            bov_text_draw(window, done_txt);
 
         edge_history = hst->edge_lists[history_idx];
         n_edges_history = hst->n_edge_list[history_idx];
@@ -197,19 +220,26 @@ void visualize_history(Mesh *mesh){
             edge_points[1][0] = points[e.dst][0];
             edge_points[1][1] = points[e.dst][1];
             edge_draw = bov_points_new(edge_points, 2, GL_DYNAMIC_DRAW);
-            bov_points_set_width(edge_draw, 0.0012);
-            if (e.in_tree)
-                bov_points_set_color(edge_draw, (GLfloat[4]) {1.0, 0.0, 0.0, 1.0});
+            if (e.in_tree){
+                mode = 1;
+                bov_points_set_color(edge_draw, EMST_EDGE_COLOR);
+                bov_points_set_width(edge_draw, EMST_EDGE_WIDTH);
+            }
+            else
+                bov_points_set_width(edge_draw, EDGE_WIDTH);
             bov_lines_draw(window, edge_draw, 0, BOV_TILL_END);
             bov_points_delete(edge_draw);
         }
 
-        bov_points_set_width(points_draw, 0.009);
+        bov_points_set_width(points_draw, POINT_WIDTH);
 		bov_points_draw(window, points_draw, 0, BOV_TILL_END);
 
 		bov_window_update(window);
 	}
 
+    bov_text_delete(delaunay_txt);
+    bov_text_delete(emst_txt);
+    bov_text_delete(done_txt);
     bov_points_delete(points_draw);
     free(edge_points);
     bov_window_delete(window);
