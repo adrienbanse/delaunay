@@ -16,7 +16,6 @@
 *H*/
 
 #ifndef __DELAUNAY_H__
-
 #define __DELAUNAY_H__
 
 #include <stdlib.h>

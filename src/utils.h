@@ -12,6 +12,9 @@
 *
 *H*/
 
+#ifndef __UTILS_H__
+#define __UTILS_H__
+
 #include "BOV.h"
 
 #define RED     "\e[0;31m"
@@ -34,3 +37,5 @@ void line_from_points(GLfloat p[2], GLfloat q[2], GLfloat *a, GLfloat *b, GLfloa
 void perpendicular_bisector_from_line(GLfloat p[2], GLfloat q[2], GLfloat *a, GLfloat *b, GLfloat *c);
 GLfloat* line_line_intersection(GLfloat a1, GLfloat b1, GLfloat c1, GLfloat a2, GLfloat b2, GLfloat c2);
 GLfloat*    find_circum_center(GLfloat p[2], GLfloat q[2], GLfloat r[2]);
+
+#endif
