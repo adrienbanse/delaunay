@@ -306,6 +306,33 @@ src/delaunay.c.s:
 	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/delaunay.c.s
 .PHONY : src/delaunay.c.s
 
+src/emst.o: src/emst.c.o
+
+.PHONY : src/emst.o
+
+# target to build an object file
+src/emst.c.o:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/emst.c.o
+.PHONY : src/emst.c.o
+
+src/emst.i: src/emst.c.i
+
+.PHONY : src/emst.i
+
+# target to preprocess a source file
+src/emst.c.i:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/emst.c.i
+.PHONY : src/emst.c.i
+
+src/emst.s: src/emst.c.s
+
+.PHONY : src/emst.s
+
+# target to generate assembly for a file
+src/emst.c.s:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/emst.c.s
+.PHONY : src/emst.c.s
+
 src/inputs.o: src/inputs.c.o
 
 .PHONY : src/inputs.o
@@ -414,6 +441,33 @@ src/utils.c.s:
 	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/utils.c.s
 .PHONY : src/utils.c.s
 
+src/visualize.o: src/visualize.c.o
+
+.PHONY : src/visualize.o
+
+# target to build an object file
+src/visualize.c.o:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.o
+.PHONY : src/visualize.c.o
+
+src/visualize.i: src/visualize.c.i
+
+.PHONY : src/visualize.i
+
+# target to preprocess a source file
+src/visualize.c.i:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.i
+.PHONY : src/visualize.c.i
+
+src/visualize.s: src/visualize.c.s
+
+.PHONY : src/visualize.s
+
+# target to generate assembly for a file
+src/visualize.c.s:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.s
+.PHONY : src/visualize.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -438,6 +492,9 @@ help:
 	@echo "... src/delaunay.o"
 	@echo "... src/delaunay.i"
 	@echo "... src/delaunay.s"
+	@echo "... src/emst.o"
+	@echo "... src/emst.i"
+	@echo "... src/emst.s"
 	@echo "... src/inputs.o"
 	@echo "... src/inputs.i"
 	@echo "... src/inputs.s"
@@ -450,6 +507,9 @@ help:
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"
+	@echo "... src/visualize.o"
+	@echo "... src/visualize.i"
+	@echo "... src/visualize.s"
 .PHONY : help
 
 

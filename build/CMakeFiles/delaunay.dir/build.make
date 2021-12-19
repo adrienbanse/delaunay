@@ -109,9 +109,22 @@ CMakeFiles/delaunay.dir/src/delaunay.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/delaunay.dir/src/delaunay.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/delaunay.c" -o CMakeFiles/delaunay.dir/src/delaunay.c.s
 
+CMakeFiles/delaunay.dir/src/visualize.c.o: CMakeFiles/delaunay.dir/flags.make
+CMakeFiles/delaunay.dir/src/visualize.c.o: ../src/visualize.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/delaunay.dir/src/visualize.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/delaunay.dir/src/visualize.c.o   -c "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.c"
+
+CMakeFiles/delaunay.dir/src/visualize.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/delaunay.dir/src/visualize.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.c" > CMakeFiles/delaunay.dir/src/visualize.c.i
+
+CMakeFiles/delaunay.dir/src/visualize.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/delaunay.dir/src/visualize.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.c" -o CMakeFiles/delaunay.dir/src/visualize.c.s
+
 CMakeFiles/delaunay.dir/src/mesh.c.o: CMakeFiles/delaunay.dir/flags.make
 CMakeFiles/delaunay.dir/src/mesh.c.o: ../src/mesh.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/delaunay.dir/src/mesh.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/delaunay.dir/src/mesh.c.o"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/delaunay.dir/src/mesh.c.o   -c "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.c"
 
 CMakeFiles/delaunay.dir/src/mesh.c.i: cmake_force
@@ -122,13 +135,28 @@ CMakeFiles/delaunay.dir/src/mesh.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/delaunay.dir/src/mesh.c.s"
 	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.c" -o CMakeFiles/delaunay.dir/src/mesh.c.s
 
+CMakeFiles/delaunay.dir/src/emst.c.o: CMakeFiles/delaunay.dir/flags.make
+CMakeFiles/delaunay.dir/src/emst.c.o: ../src/emst.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/delaunay.dir/src/emst.c.o"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/delaunay.dir/src/emst.c.o   -c "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/emst.c"
+
+CMakeFiles/delaunay.dir/src/emst.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/delaunay.dir/src/emst.c.i"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/emst.c" > CMakeFiles/delaunay.dir/src/emst.c.i
+
+CMakeFiles/delaunay.dir/src/emst.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/delaunay.dir/src/emst.c.s"
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/emst.c" -o CMakeFiles/delaunay.dir/src/emst.c.s
+
 # Object files for target delaunay
 delaunay_OBJECTS = \
 "CMakeFiles/delaunay.dir/src/main.c.o" \
 "CMakeFiles/delaunay.dir/src/inputs.c.o" \
 "CMakeFiles/delaunay.dir/src/utils.c.o" \
 "CMakeFiles/delaunay.dir/src/delaunay.c.o" \
-"CMakeFiles/delaunay.dir/src/mesh.c.o"
+"CMakeFiles/delaunay.dir/src/visualize.c.o" \
+"CMakeFiles/delaunay.dir/src/mesh.c.o" \
+"CMakeFiles/delaunay.dir/src/emst.c.o"
 
 # External object files for target delaunay
 delaunay_EXTERNAL_OBJECTS =
@@ -137,13 +165,15 @@ bin/delaunay: CMakeFiles/delaunay.dir/src/main.c.o
 bin/delaunay: CMakeFiles/delaunay.dir/src/inputs.c.o
 bin/delaunay: CMakeFiles/delaunay.dir/src/utils.c.o
 bin/delaunay: CMakeFiles/delaunay.dir/src/delaunay.c.o
+bin/delaunay: CMakeFiles/delaunay.dir/src/visualize.c.o
 bin/delaunay: CMakeFiles/delaunay.dir/src/mesh.c.o
+bin/delaunay: CMakeFiles/delaunay.dir/src/emst.c.o
 bin/delaunay: CMakeFiles/delaunay.dir/build.make
 bin/delaunay: deps/BOV/lib/libbov.a
 bin/delaunay: deps/BOV/deps/glad/libglad.a
 bin/delaunay: deps/BOV/deps/glfw/src/libglfw3.a
 bin/delaunay: CMakeFiles/delaunay.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable bin/delaunay"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable bin/delaunay"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/delaunay.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

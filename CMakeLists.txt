@@ -10,7 +10,9 @@ add_executable(${EXEC}
                "${CMAKE_CURRENT_SOURCE_DIR}/src/inputs.c"
                "${CMAKE_CURRENT_SOURCE_DIR}/src/utils.c"
                "${CMAKE_CURRENT_SOURCE_DIR}/src/delaunay.c"
+               "${CMAKE_CURRENT_SOURCE_DIR}/src/visualize.c"
                "${CMAKE_CURRENT_SOURCE_DIR}/src/mesh.c"
+               "${CMAKE_CURRENT_SOURCE_DIR}/src/emst.c"
                )
 
 target_include_directories(${EXEC} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")

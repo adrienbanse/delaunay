@@ -1,5 +1,10 @@
 #include "utils.h"
 
+void error(char msg[]){
+    fprintf(stderr, RED "[ERROR]" NC ": %s\n", msg);
+    exit(EXIT_FAILURE);
+}  
+
 // https://www.geeksforgeeks.org/program-find-circumcenter-triangle-2/
 void line_from_points(GLfloat p[2], GLfloat q[2], GLfloat *a, GLfloat *b, GLfloat *c){
     *a = q[1] - p[1];

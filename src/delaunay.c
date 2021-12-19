@@ -1,8 +1,8 @@
 #include "delaunay.h"
 
-
 void delaunay(Mesh *mesh){
     qsort(mesh->points, mesh->n_points, sizeof(mesh->points[0]), compare_points);
+    erase_history(); // in case of
     triangulate(mesh, 0, mesh->n_points, NULL);
     clean_mesh(mesh);
 }
@@ -10,6 +10,7 @@ void delaunay(Mesh *mesh){
 void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
     if ((end - begin) == 2){
         Edge *a = make_edge(mesh, begin + 0, begin + 1);
+        checkpoint_history(mesh);
         if (res == NULL)
             return;
         res[0] = a;
@@ -24,6 +25,7 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
 
         if (right_of(mesh, begin + 2, a)){
             connect(mesh, b, a);
+            checkpoint_history(mesh);
             if (res == NULL)
                 return;
             res[0] = a;
@@ -32,12 +34,15 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
         }
         if (left_of(mesh, begin + 2, a)){
             Edge *c = connect(mesh, b, a);
+            checkpoint_history(mesh);
             if (res == NULL)
                 return;
             res[0] = c->sym;
             res[1] = c; 
             return;
         }
+
+        checkpoint_history(mesh);
         if (res == NULL)
             return;
         res[0] = a;
@@ -48,7 +53,11 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
     GLsizei middle = (end - begin + 1) / 2;
 
     Edge **cont_left = (Edge **)malloc(2 * sizeof(Edge *));
+    if (cont_left == NULL)
+        error("Left container in triangulate cannot be malloc'd");
     Edge **cont_right = (Edge **)malloc(2 * sizeof(Edge *));
+    if (cont_left == NULL)
+        error("Right container in triangulate cannot be malloc'd");
 
     triangulate(mesh, begin, begin + middle, cont_left);
     triangulate(mesh, begin + middle, end, cont_right);
@@ -94,6 +103,7 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
                     in_circle(mesh, base->dst, base->src, rcand->dst, rcand->next->dst)){
                 t = rcand->next;
                 delete_edge(rcand);
+                (mesh->n_deleted)++;
                 rcand = t;
             }
         }
@@ -102,6 +112,7 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
                     in_circle(mesh, base->dst, base->src, lcand->dst, lcand->prev->dst)){
                 t = lcand->prev;
                 delete_edge(lcand);
+                (mesh->n_deleted)++;
                 lcand = t;
             }
         }
@@ -112,47 +123,12 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
             base = connect(mesh, base->sym, rcand->sym);
     }
 
+    checkpoint_history(mesh);
     if (res == NULL)
         return;
     res[0] = ldo;    
     res[1] = rdo;    
 }
-
-void emst(Mesh *mesh){
-    compute_edge_lengths(mesh);
-    kruskal(mesh);
-}
-
-void kruskal(Mesh* mesh){
-    UFNode *node_list = (UFNode *)malloc(mesh->n_points * sizeof(UFNode));
-    Edge **edge_list_ordered = (Edge **)malloc(mesh->n_edges * sizeof(Edge*));
-    memcpy(edge_list_ordered, mesh->edge_list, mesh->n_edges * sizeof(Edge*));
-    qsort(edge_list_ordered, mesh->n_edges, sizeof(Edge *), compare_edge_lengths);
-    
-    GLsizei i;
-    UFNode *u, *v, *find_u, *find_v;
-    Edge* e;
-
-    for (i = 0; i < mesh->n_points; i++){
-        make_set(&node_list[i]);
-    }
-    for (i = 0; i < mesh->n_edges; i++){
-        e = edge_list_ordered[i];
-        u = &node_list[e->src];
-        v = &node_list[e->dst];
-        find_u = find(u);
-        find_v = find(v);
-        if (find_u != find_v){
-            e->in_tree = 1; // add to the tree
-            e->sym->in_tree = 1;
-            union_find(find_u, find_v);
-        }
-    }
-
-    free(node_list);
-    free(edge_list_ordered);
-}
-
 
 int compare_points(const void *pointer_a, const void *pointer_b){
     GLfloat (*a)[2] = (GLfloat(*)[2]) pointer_a;
