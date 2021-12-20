@@ -19,9 +19,16 @@
 #include "BOV.h"
 #include "utils.h"
 #include "mesh.h"
+#include "voronoi.h"
 #include "config.h"
+#include "inputs.h"
 
-typedef struct History History;
+typedef struct history_t    history_t;
+typedef struct circle_t     circle_t;
+
+struct circle_t{
+    GLfloat (*circle)[2];
+};
 
 /*******************************************************************
 *   History
@@ -33,10 +40,10 @@ typedef struct History History;
 *         corresponds to the number of edges at a checkpoint
 *       - "length" length is the number of checkpoints
 *******************************************************************/
-struct History{
-    Edge    **edge_lists;
-    GLsizei *n_edge_list;
-    GLsizei length;
+struct history_t{
+    half_edge_t     **edge_lists;
+    GLsizei         *n_edge_list;
+    GLsizei         length;
 };
 
 /*******************************************************************
@@ -44,7 +51,7 @@ struct History{
 *
 *   Intitializes the History structure hst
 *******************************************************************/
-void    initialize_history(History *hst);
+void    initialize_history(history_t *hst);
 
 /*******************************************************************
 *   checkpoint_history
@@ -53,7 +60,7 @@ void    initialize_history(History *hst);
 *   when called in .hst file HISTORY_FILE (see config.h)
 *   Note: data is appended to the end of the file
 *******************************************************************/
-void    checkpoint_history(Mesh *mesh);
+void    checkpoint_history(mesh_t *mesh);
 
 /*******************************************************************
 *   erase_history
@@ -68,7 +75,7 @@ void    erase_history();
 *   Transfers data from .hst file HISTORY_FILE (see config.h) to 
 *   History structure hst
 *******************************************************************/
-void    read_history(History *hst);
+void    read_history(history_t *hst);
 
 /*******************************************************************
 *   clean_history
@@ -76,7 +83,7 @@ void    read_history(History *hst);
 *   Free History structure hst and all its attributes, erase 
 *   HISTORY_FILE content if ERASE_AFTER is set to 1 (see config.h)
 *******************************************************************/
-void    clean_history(History *hst);
+void    clean_history(history_t *hst);
 
 /*******************************************************************
 *   visualize_mesh_simple
@@ -86,7 +93,7 @@ void    clean_history(History *hst);
 *   triangulation algorithm
 *   Note: based on BOV library
 *******************************************************************/
-void    visualize_mesh_simple(Mesh *mesh);
+void    visualize_mesh_simple(mesh_t *mesh);
 
 /*******************************************************************
 *   visualize_history
@@ -95,6 +102,11 @@ void    visualize_mesh_simple(Mesh *mesh);
 *   triangulation algorithm
 *   Note: based on BOV library
 *******************************************************************/
-void    visualize_history(Mesh *mesh);
+void    visualize_history(mesh_t *mesh);
+
+void    visualize_mesh_with_dual(mesh_t *mesh, graph_t *graph);
+
+void visualize_with_circles(graph_t *graph, mesh_t *mesh);
+void smooth_circle(GLfloat (*circle)[2], GLfloat center_x, GLfloat center_y, GLfloat radius);
 
 #endif

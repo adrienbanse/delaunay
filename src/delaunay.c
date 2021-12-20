@@ -17,7 +17,7 @@
 
 #include "delaunay.h"
 
-void delaunay(Mesh *mesh){
+void delaunay(mesh_t *mesh){
     qsort(mesh->points, mesh->n_points, sizeof(mesh->points[0]), compare_points);
 #if HISTORY_MODE
     erase_history(); // in case of
@@ -26,9 +26,9 @@ void delaunay(Mesh *mesh){
     clean_mesh(mesh);
 }
 
-void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
+void triangulate(mesh_t *mesh, GLsizei begin, GLsizei end, half_edge_t **res){
     if ((end - begin) == 2){
-        Edge *a = make_edge(mesh, begin + 0, begin + 1);
+        half_edge_t *a = make_edge(mesh, begin + 0, begin + 1);
 #if HISTORY_MODE
         checkpoint_history(mesh);
 #endif
@@ -40,8 +40,8 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
     }    
 
     if ((end - begin) == 3){
-        Edge *a = make_edge(mesh, begin + 0, begin + 1);
-        Edge *b = make_edge(mesh, begin + 1, begin + 2);
+        half_edge_t *a = make_edge(mesh, begin + 0, begin + 1);
+        half_edge_t *b = make_edge(mesh, begin + 1, begin + 2);
         splice(a->sym, b);
 
         if (right_of(mesh, begin + 2, a)){
@@ -56,7 +56,7 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
             return;
         }
         if (left_of(mesh, begin + 2, a)){
-            Edge *c = connect(mesh, b, a);
+            half_edge_t *c = connect(mesh, b, a);
 #if HISTORY_MODE
             checkpoint_history(mesh);
 #endif
@@ -78,20 +78,20 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
 
     GLsizei middle = (end - begin + 1) / 2;
 
-    Edge **cont_left = (Edge **)malloc(2 * sizeof(Edge *));
+    half_edge_t **cont_left = (half_edge_t **)malloc(2 * sizeof(half_edge_t *));
     if (cont_left == NULL)
         error("Left container in triangulate cannot be malloc'd");
-    Edge **cont_right = (Edge **)malloc(2 * sizeof(Edge *));
+    half_edge_t **cont_right = (half_edge_t **)malloc(2 * sizeof(half_edge_t *));
     if (cont_left == NULL)
         error("Right container in triangulate cannot be malloc'd");
 
     triangulate(mesh, begin, begin + middle, cont_left);
     triangulate(mesh, begin + middle, end, cont_right);
 
-    Edge *ldo = cont_left[0];
-    Edge *ldi = cont_left[1];
-    Edge *rdi = cont_right[0];
-    Edge *rdo = cont_right[1];
+    half_edge_t *ldo = cont_left[0];
+    half_edge_t *ldi = cont_left[1];
+    half_edge_t *rdi = cont_right[0];
+    half_edge_t *rdo = cont_right[1];
 
     free(cont_left);
     free(cont_right);
@@ -105,7 +105,7 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
             break;
     }
 
-    Edge *base = connect(mesh, ldi->sym, rdi);
+    half_edge_t *base = connect(mesh, ldi->sym, rdi);
 
     if ( mesh->points[ldi->src][0] == mesh->points[ldo->src][0] && 
          mesh->points[ldi->src][1] == mesh->points[ldo->src][1])
@@ -114,7 +114,7 @@ void triangulate(Mesh *mesh, GLsizei begin, GLsizei end, Edge **res){
          mesh->points[rdi->src][1] == mesh->points[rdo->src][1])
         rdo = base->sym;
 
-    Edge *rcand, *lcand, *t;
+    half_edge_t *rcand, *lcand, *t;
     int v_rcand, v_lcand;
 
     while (1){

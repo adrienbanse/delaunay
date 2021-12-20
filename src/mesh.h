@@ -24,8 +24,16 @@
 #include "utils.h"
 #include "config.h"
 
-typedef struct Mesh Mesh;
-typedef struct Edge Edge;
+typedef struct mesh_t       mesh_t;
+typedef struct half_edge_t  half_edge_t;
+typedef struct triangle_t   triangle_t;
+
+// TODO
+struct triangle_t{
+    GLsizei     vertices[3];
+    half_edge_t *e[3];
+    GLsizei     idx;
+};
 
 /*******************************************************************
 *   Mesh
@@ -33,19 +41,23 @@ typedef struct Edge Edge;
 *   Structure containing: 
 *       - "points" set of points
 *       - "n_points" number of points
+*       - "edge_list" list of pointers to the edges of the mesh
 *       - "n_edges" number of edges
 *       - "n_edges_max" maximal number of edges, if needed this
 *         will be incremented
 *       - "n_deleted" number of deleted edges
-*       - "edge_list" list of pointers to the edges of the mesh
+*       - TODO
+*       - TODO
 *******************************************************************/
-struct Mesh{
-    GLfloat (*points)[2];
-    GLsizei n_points;
-    GLsizei n_edges;
-    GLsizei n_edges_max;
-    GLsizei n_deleted;
-    Edge    **edge_list;
+struct mesh_t{
+    GLfloat     (*points)[2];
+    GLsizei     n_points;
+    half_edge_t **edge_list;
+    GLsizei     n_edges;
+    GLsizei     n_edges_max;
+    GLsizei     n_deleted;
+    triangle_t  **triangle_list;
+    GLsizei     n_triangles;
 };
 
 /*******************************************************************
@@ -66,17 +78,21 @@ struct Mesh{
 *         config.h)
 *       - "in_tree" boolean, set to 1 if edge is in EMST (only
 *         changed if EMST is 1, see config.h)
+*       - TODO
 *******************************************************************/
-struct Edge{
-    GLsizei src;
-    GLsizei dst;
-    Edge    *next; /* CCW origin iterator */
-    Edge    *prev; /* CW origin iterator */
-    Edge    *sym; 
-    int     deleted;
+struct half_edge_t{
+    GLsizei     src;
+    GLsizei     dst;
+    half_edge_t *next; /* CCW origin iterator */
+    half_edge_t *prev; /* CW origin iterator */
+    half_edge_t *sym; 
+    int         deleted;
     /* EMST attributes */
-    GLfloat length; 
-    int     in_tree;
+    GLfloat     length; 
+    int         in_tree;
+    /* To find triangles */
+    int         visited;
+    triangle_t  *t;
 };
 
 /*******************************************************************
@@ -84,7 +100,7 @@ struct Edge{
 *
 *   Intitializes the Mesh structure mesh
 *******************************************************************/
-void    initialize_mesh( Mesh *mesh, 
+void    initialize_mesh( mesh_t *mesh, 
                          GLfloat points[][2], 
                          GLsizei n_points, 
                          GLsizei n_edges_max);
@@ -94,28 +110,28 @@ void    initialize_mesh( Mesh *mesh,
 *
 *   Free Mesh structure mesh and all its attributes
 *******************************************************************/
-void    free_mesh(Mesh *mesh);
+void    free_mesh(mesh_t *mesh);
 
 /*******************************************************************
 *   make_edge
 *
 *   Add to mesh edge between src and dst
 *******************************************************************/
-Edge*   make_edge(Mesh* mesh, int src, int dst);
+half_edge_t*   make_edge(mesh_t* mesh, int src, int dst);
 
 /*******************************************************************
 *   connect
 *
 *   Connects destination of a to the origin of b
 *******************************************************************/
-Edge*   connect(Mesh* mesh, Edge* a, Edge* b);
+half_edge_t*   connect(mesh_t* mesh, half_edge_t* a, half_edge_t* b);
 
 /*******************************************************************
 *   delete_edge
 *
 *   Deletes edge e
 *******************************************************************/
-void    delete_edge(Edge* e);
+void    delete_edge(half_edge_t* e);
 
 /*******************************************************************
 *   splice
@@ -124,7 +140,7 @@ void    delete_edge(Edge* e);
 *   Note: Explained in depth in 
 *   https://graphics.stanford.edu/courses/cs348a-09-fall/Handouts/handout31.pdf
 *******************************************************************/
-void    splice(Edge* a, Edge* b);
+void    splice(half_edge_t* a, half_edge_t* b);
 
 /*******************************************************************
 *   clean_mesh
@@ -132,7 +148,7 @@ void    splice(Edge* a, Edge* b);
 *   Removes from edge list of mesh all edges that were deleted and
 *   free them
 *******************************************************************/
-void    clean_mesh(Mesh* mesh);
+void    clean_mesh(mesh_t* mesh);
 
 /*******************************************************************
 *   right_of
@@ -140,7 +156,7 @@ void    clean_mesh(Mesh* mesh);
 *   Returns 1 if point with index p_id is at the right of the edge 
 *   e, 0 otherwise
 *******************************************************************/
-int     right_of(Mesh* mesh, GLsizei p_id, Edge* e);
+int     right_of(mesh_t* mesh, GLsizei p_id, half_edge_t* e);
 
 /*******************************************************************
 *   left_of
@@ -148,7 +164,7 @@ int     right_of(Mesh* mesh, GLsizei p_id, Edge* e);
 *   Returns 1 if point with index p_id is at the left of the edge 
 *   e, 0 otherwise
 *******************************************************************/
-int     left_of(Mesh* mesh, GLsizei p_id, Edge* e);
+int     left_of(mesh_t* mesh, GLsizei p_id, half_edge_t* e);
 
 /*******************************************************************
 *   in_circle
@@ -157,7 +173,7 @@ int     left_of(Mesh* mesh, GLsizei p_id, Edge* e);
 *   circle of the triangle whose vertices are points with indices
 *   a_id, b_id and c_id, 0 otherwise
 *******************************************************************/
-int     in_circle( Mesh *mesh, 
+int     in_circle( mesh_t *mesh, 
                    GLsizei a_id, 
                    GLsizei b_id, 
                    GLsizei c_id, 

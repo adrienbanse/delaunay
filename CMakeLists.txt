@@ -13,6 +13,7 @@ add_executable(${EXEC}
                "${CMAKE_CURRENT_SOURCE_DIR}/src/visualize.c"
                "${CMAKE_CURRENT_SOURCE_DIR}/src/mesh.c"
                "${CMAKE_CURRENT_SOURCE_DIR}/src/emst.c"
+               "${CMAKE_CURRENT_SOURCE_DIR}/src/voronoi.c"
                )
 
 target_include_directories(${EXEC} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")

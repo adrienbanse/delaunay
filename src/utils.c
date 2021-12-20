@@ -56,3 +56,13 @@ GLfloat* find_circum_center(GLfloat p[2], GLfloat q[2], GLfloat r[2]){
     GLfloat* circumcenter = line_line_intersection(a, b, c, e, f, g);
     return (circumcenter[0] == __FLT_MAX__ && circumcenter[0] == __FLT_MAX__ ? NULL : circumcenter);
 }
+
+void print_square_matrix(GLsizei **matrix, GLsizei n){
+    GLsizei i, j;
+    for (i = 0; i < n; i++){
+        for (j = 0; j < n; j++){
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}

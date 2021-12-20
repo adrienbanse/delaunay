@@ -468,6 +468,33 @@ src/visualize.c.s:
 	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/visualize.c.s
 .PHONY : src/visualize.c.s
 
+src/voronoi.o: src/voronoi.c.o
+
+.PHONY : src/voronoi.o
+
+# target to build an object file
+src/voronoi.c.o:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/voronoi.c.o
+.PHONY : src/voronoi.c.o
+
+src/voronoi.i: src/voronoi.c.i
+
+.PHONY : src/voronoi.i
+
+# target to preprocess a source file
+src/voronoi.c.i:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/voronoi.c.i
+.PHONY : src/voronoi.c.i
+
+src/voronoi.s: src/voronoi.c.s
+
+.PHONY : src/voronoi.s
+
+# target to generate assembly for a file
+src/voronoi.c.s:
+	$(MAKE) -f CMakeFiles/delaunay.dir/build.make CMakeFiles/delaunay.dir/src/voronoi.c.s
+.PHONY : src/voronoi.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -510,6 +537,9 @@ help:
 	@echo "... src/visualize.o"
 	@echo "... src/visualize.i"
 	@echo "... src/visualize.s"
+	@echo "... src/voronoi.o"
+	@echo "... src/voronoi.i"
+	@echo "... src/voronoi.s"
 .PHONY : help
 
 

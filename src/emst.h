@@ -23,7 +23,7 @@
 #include "utils.h"
 #include "config.h"
 
-typedef struct UFNode UFNode;
+typedef struct uf_node_t uf_node_t;
 
 /*******************************************************************
 *   UFNode
@@ -32,9 +32,9 @@ typedef struct UFNode UFNode;
 *       - "parent" pointer to the parent node
 *       - "size" number of descendants
 *******************************************************************/
-struct UFNode{
-    UFNode *parent;
-    GLsizei size;
+struct uf_node_t{
+    uf_node_t   *parent;
+    GLsizei     size;
 };
 
 /*******************************************************************
@@ -42,7 +42,7 @@ struct UFNode{
 *
 *   Adds a new node to the Union Find data structure
 *******************************************************************/
-void    make_set(UFNode *node);
+void    make_set(uf_node_t *node);
 
 /*******************************************************************
 *   find
@@ -50,7 +50,7 @@ void    make_set(UFNode *node);
 *   Iterates on the parent pointers from UFNode whose pointer is
 *   node until it reaches a root element, returns it
 *******************************************************************/
-UFNode* find(UFNode *node);
+uf_node_t* find(uf_node_t *node);
 
 /*******************************************************************
 *   union_find
@@ -60,7 +60,7 @@ UFNode* find(UFNode *node);
 *   their union
 *   Note: this assumes that find_u != find_v in the first place
 *******************************************************************/
-void    union_find(UFNode *find_u, UFNode *find_v);
+void    union_find(uf_node_t *find_u, uf_node_t *find_v);
 
 /*******************************************************************
 *   kruskal
@@ -68,14 +68,14 @@ void    union_find(UFNode *find_u, UFNode *find_v);
 *   Kruskal's algorithm applied to Delaunay triangulation output
 *   mesh
 *******************************************************************/
-void    kruskal(Mesh* mesh);
+void    kruskal(mesh_t* mesh);
 
 /*******************************************************************
 *   emst
 *
 *   Computes the Euclidian Minimum Spanning Tree
 *******************************************************************/
-void    emst(Mesh *mesh);
+void    emst(mesh_t *mesh);
 
 /*******************************************************************
 *   compute_edge_lengths
@@ -83,7 +83,7 @@ void    emst(Mesh *mesh);
 *   For each edge, computes the (squared) euclidian distance between   
 *   source and destination points
 *******************************************************************/
-void    compute_edge_lengths(Mesh* mesh);
+void    compute_edge_lengths(mesh_t* mesh);
 
 /*******************************************************************
 *   compare_edge_lengths

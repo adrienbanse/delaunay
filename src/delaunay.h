@@ -31,7 +31,7 @@
 *   Computes the Delaunay triangulation for the whole set of points
 *   stored in mesh, stores result in mesh
 *******************************************************************/
-void    delaunay(Mesh* mesh);
+void    delaunay(mesh_t* mesh);
 
 /*******************************************************************
 *   triangulate
@@ -41,10 +41,10 @@ void    delaunay(Mesh* mesh);
 *   and stores in ret the CCW convex hull edge out of the leftmost
 *   vertex and the CQ convex hull edge out of the rightmost vertex
 *******************************************************************/
-void    triangulate( Mesh* mesh, 
+void    triangulate( mesh_t* mesh, 
                      GLsizei begin, 
                      GLsizei end, 
-                     Edge** ret);
+                     half_edge_t** ret);
 
 /*******************************************************************
 *   compare_points

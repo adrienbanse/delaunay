@@ -19,8 +19,8 @@
 
 #include "mesh.h"
 
-void initialize_mesh(Mesh *mesh, GLfloat points[][2], GLsizei n_points, GLsizei n_edges_max){
-    Edge **edge_list = (Edge **)malloc(n_edges_max * sizeof(Edge *));
+void initialize_mesh(mesh_t *mesh, GLfloat points[][2], GLsizei n_points, GLsizei n_edges_max){
+    half_edge_t **edge_list = (half_edge_t **)malloc(n_edges_max * sizeof(half_edge_t *));
     if (edge_list == NULL)
         error("Delaunay mesh cannot be initialized");
     mesh->points = points;
@@ -29,26 +29,35 @@ void initialize_mesh(Mesh *mesh, GLfloat points[][2], GLsizei n_points, GLsizei 
     mesh->n_edges_max = n_edges_max;
     mesh->n_deleted = 0;
     mesh->edge_list = edge_list;
+    mesh->triangle_list = NULL;
+    mesh->n_triangles = 0;
 }
 
-void free_mesh(Mesh *mesh){
-    Edge **edge_list = mesh->edge_list;
-    for (GLsizei i = 0; i < mesh->n_edges; i++){
+void free_mesh(mesh_t *mesh){
+    GLsizei i;
+    half_edge_t **edge_list = mesh->edge_list;
+    for (i = 0; i < mesh->n_edges; i++){
         free(edge_list[i]->sym);
         free(edge_list[i]);
     }
     free(edge_list);
+    triangle_t **triangle_list = mesh->triangle_list;
+    if (triangle_list != NULL){
+        for (i = 0; i < mesh->n_triangles; i++)
+            free(triangle_list[i]);
+        free(triangle_list);
+    }
     free(mesh->points);
     free(mesh);
 }
 
-Edge* make_edge(Mesh *mesh, int src, int dst){
+half_edge_t* make_edge(mesh_t *mesh, int src, int dst){
     if (mesh->n_edges + 2 >= mesh->n_edges_max){
         mesh->n_edges_max += 100;
-        mesh->edge_list = (Edge **)realloc(mesh->edge_list, mesh->n_edges_max * sizeof(Edge *));
+        mesh->edge_list = (half_edge_t **)realloc(mesh->edge_list, mesh->n_edges_max * sizeof(half_edge_t *));
     } 
-    Edge *e = (Edge *)malloc(sizeof(Edge));
-    Edge *s = (Edge *)malloc(sizeof(Edge));
+    half_edge_t *e = (half_edge_t *)malloc(sizeof(half_edge_t));
+    half_edge_t *s = (half_edge_t *)malloc(sizeof(half_edge_t));
     
     e->src = src;
     e->dst = dst;
@@ -57,6 +66,8 @@ Edge* make_edge(Mesh *mesh, int src, int dst){
     e->prev = e;
     e->deleted = 0;
     e->in_tree = 0;
+    e->visited = 0;
+    e->t = NULL;
 
     s->src = dst;
     s->dst = src;
@@ -65,6 +76,8 @@ Edge* make_edge(Mesh *mesh, int src, int dst){
     s->prev = s;
     s->deleted = 0;
     s->in_tree = 0;
+    s->visited = 0;
+    s->t = NULL;
 
     mesh->edge_list[mesh->n_edges] = e;
     (mesh->n_edges)++;
@@ -72,38 +85,38 @@ Edge* make_edge(Mesh *mesh, int src, int dst){
     return e;
 }
 
-Edge* connect(Mesh *mesh, Edge *a, Edge *b){
-    Edge *e = make_edge(mesh, a->dst, b->src);
+half_edge_t* connect(mesh_t *mesh, half_edge_t *a, half_edge_t *b){
+    half_edge_t *e = make_edge(mesh, a->dst, b->src);
     splice(e, a->sym->prev);
     splice(e->sym, b);
     return e;
 }
 
-void delete_edge(Edge *e){
+void delete_edge(half_edge_t *e){
     splice(e, e->prev);
     splice(e->sym, e->sym->prev);
     e->deleted = 1;
     e->sym->deleted = 1;
 }
 
-void splice(Edge *a, Edge *b){
+void splice(half_edge_t *a, half_edge_t *b){
     if (a == b){
         return;
     }
     a->next->prev = b;
     b->next->prev = a;
 
-    Edge **tmp = (Edge **)malloc(sizeof(Edge *));
+    half_edge_t **tmp = (half_edge_t **)malloc(sizeof(half_edge_t *));
     *tmp = a->next;
     a->next = b->next;
     b->next = *tmp;
     free(tmp);
 }
 
-void clean_mesh(Mesh* mesh){
+void clean_mesh(mesh_t* mesh){
     for (GLsizei i = 0; i < mesh->n_edges; i++)
         if (mesh->edge_list[i]->deleted){
-            Edge *to_delete = mesh->edge_list[i];
+            half_edge_t *to_delete = mesh->edge_list[i];
             mesh->edge_list[i] = mesh->edge_list[mesh->n_edges - 1];
             free(to_delete->sym);
             free(to_delete);
@@ -113,7 +126,7 @@ void clean_mesh(Mesh* mesh){
 }
 
 
-int right_of(Mesh* mesh, GLsizei p_id, Edge* e){
+int right_of(mesh_t* mesh, GLsizei p_id, half_edge_t* e){
     GLfloat *p = mesh->points[p_id];
     GLfloat *src = mesh->points[e->src];
     GLfloat *dst = mesh->points[e->dst];
@@ -121,7 +134,7 @@ int right_of(Mesh* mesh, GLsizei p_id, Edge* e){
     return det > 0;
 }
 
-int left_of(Mesh *mesh, GLsizei p_id, Edge *e){
+int left_of(mesh_t *mesh, GLsizei p_id, half_edge_t *e){
     GLfloat *p = mesh->points[p_id];
     GLfloat *src = mesh->points[e->src];
     GLfloat *dst = mesh->points[e->dst];
@@ -129,7 +142,7 @@ int left_of(Mesh *mesh, GLsizei p_id, Edge *e){
     return det < 0;
 }
 
-int in_circle(Mesh *mesh, GLsizei a_id, GLsizei b_id, GLsizei c_id, GLsizei d_id){
+int in_circle(mesh_t *mesh, GLsizei a_id, GLsizei b_id, GLsizei c_id, GLsizei d_id){
     GLfloat *a = mesh->points[a_id];
     GLfloat *b = mesh->points[b_id];
     GLfloat *c = mesh->points[c_id];

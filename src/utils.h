@@ -38,4 +38,10 @@ void perpendicular_bisector_from_line(GLfloat p[2], GLfloat q[2], GLfloat *a, GL
 GLfloat* line_line_intersection(GLfloat a1, GLfloat b1, GLfloat c1, GLfloat a2, GLfloat b2, GLfloat c2);
 GLfloat*    find_circum_center(GLfloat p[2], GLfloat q[2], GLfloat r[2]);
 
+// TODO
+
+
+// TODO
+void print_square_matrix(GLsizei **matrix, GLsizei n);
+
 #endif
