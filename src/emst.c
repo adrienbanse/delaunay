@@ -7,8 +7,11 @@
 *                   of Kruskal's algorithm applied to Delaunay trian-
 *                   gulation's output
 *
-* AUTHORS:          Adrien Banse and Diego de Crombrugghe   
+* AUTHORS:          Adrien Banse <adrien.banse@student.uclouvain.be>
+*                   Diego de Crombrugghe <diego.decrombrugghe@student.uclouvain.be>
+* 
 * DATE:             23 December 2021
+*
 * CONTEXT:          LMECA2170 course project at UCLouvain
 *                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
 *
@@ -30,7 +33,7 @@ uf_node_t* find(uf_node_t *node){
 
 void union_find(uf_node_t *find_u, uf_node_t *find_v){
     if (find_u->size < find_v->size){
-        // swap
+        /* swap */
         uf_node_t **tmp = (uf_node_t **)malloc(sizeof(uf_node_t*));
         *tmp = find_u;
         find_u = find_v;
@@ -57,15 +60,20 @@ void kruskal(mesh_t* mesh){
         error("Ordered copy of edge list in Kruskal algorithm cannot be malloc'd");
 
     memcpy(edge_list_ordered, mesh->edge_list, mesh->n_edges * sizeof(half_edge_t*));
+
+    /* order edges from minimum weight to maximum weight */
     qsort(edge_list_ordered, mesh->n_edges, sizeof(half_edge_t *), compare_edge_lengths);
 
     GLsizei i;
     uf_node_t *u, *v, *find_u, *find_v;
     half_edge_t *e;
 
+    /* initialize union-find data structure */
     for (i = 0; i < mesh->n_points; i++){
         make_set(&node_list[i]);
     }
+
+    /* iterating on the edges and add to the three if it does not create a cycle */
     for (i = 0; i < mesh->n_edges; i++){
         e = edge_list_ordered[i];
         u = &node_list[e->src];
@@ -92,6 +100,7 @@ void compute_edge_lengths(mesh_t* mesh){
         e = mesh->edge_list[i];
         GLfloat *src = mesh->points[e->src];
         GLfloat *dst = mesh->points[e->dst];
+        /* /!\ squared length */
         e->length = (src[0] - dst[0]) * (src[0] - dst[0]) + (src[1] - dst[1]) * (src[1] - dst[1]);
         e->sym->length = e->length;
     }

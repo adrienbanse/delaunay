@@ -52,6 +52,7 @@ void free_mesh(mesh_t *mesh){
 }
 
 half_edge_t* make_edge(mesh_t *mesh, int src, int dst){
+    /* re-alloc if needed */
     if (mesh->n_edges + 2 >= mesh->n_edges_max){
         mesh->n_edges_max += 100;
         mesh->edge_list = (half_edge_t **)realloc(mesh->edge_list, mesh->n_edges_max * sizeof(half_edge_t *));
@@ -106,10 +107,12 @@ void splice(half_edge_t *a, half_edge_t *b){
     a->next->prev = b;
     b->next->prev = a;
 
+    /* swap here */
     half_edge_t **tmp = (half_edge_t **)malloc(sizeof(half_edge_t *));
     *tmp = a->next;
     a->next = b->next;
     b->next = *tmp;
+    
     free(tmp);
 }
 

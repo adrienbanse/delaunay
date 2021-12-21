@@ -6,7 +6,9 @@
 * NOTES:            Given by the teaching team of the course LMECA2170
 *
 * AUTHORS:          LMECA2170 teaching team  
+*
 * DATE:             23 December 2021
+*
 * CONTEXT:          LMECA2170 course project at UCLouvain
 *                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
 *

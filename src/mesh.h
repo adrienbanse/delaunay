@@ -10,8 +10,11 @@
 *                   Python equivalent in
 *                   https://github.com/alexbaryzhikov/triangulation
 *
-* AUTHORS:          Adrien Banse and Diego de Crombrugghe   
+* AUTHORS:          Adrien Banse <adrien.banse@student.uclouvain.be>
+*                   Diego de Crombrugghe <diego.decrombrugghe@student.uclouvain.be>
+* 
 * DATE:             23 December 2021
+*
 * CONTEXT:          LMECA2170 course project at UCLouvain
 *                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
 *
@@ -28,7 +31,14 @@ typedef struct mesh_t       mesh_t;
 typedef struct half_edge_t  half_edge_t;
 typedef struct triangle_t   triangle_t;
 
-// TODO
+/*******************************************************************
+*   triangle_t
+*
+*   Structure containing: 
+*       - "vertices" 3 vertices in the triangle
+*       - "e" 3 pointers of edges in the triangle
+*       - "idx" unique index for the triangle
+*******************************************************************/
 struct triangle_t{
     GLsizei     vertices[3];
     half_edge_t *e[3];
@@ -46,8 +56,9 @@ struct triangle_t{
 *       - "n_edges_max" maximal number of edges, if needed this
 *         will be incremented
 *       - "n_deleted" number of deleted edges
-*       - TODO
-*       - TODO
+*       - "triangle_list" list of pointers of triangles of the 
+          mesh
+*       - "n_triangles" number of triangles
 *******************************************************************/
 struct mesh_t{
     GLfloat     (*points)[2];
@@ -78,7 +89,7 @@ struct mesh_t{
 *         config.h)
 *       - "in_tree" boolean, set to 1 if edge is in EMST (only
 *         changed if EMST is 1, see config.h)
-*       - TODO
+*       - "t" triangle to which the edge is linked
 *******************************************************************/
 struct half_edge_t{
     GLsizei     src;
@@ -100,38 +111,42 @@ struct half_edge_t{
 *
 *   Intitializes the Mesh structure mesh
 *******************************************************************/
-void    initialize_mesh( mesh_t *mesh, 
-                         GLfloat points[][2], 
-                         GLsizei n_points, 
-                         GLsizei n_edges_max);
+void            initialize_mesh(    mesh_t          *mesh, 
+                                    GLfloat         points[][2], 
+                                    GLsizei         n_points, 
+                                    GLsizei         n_edges_max);
 
 /*******************************************************************
 *   free_mesh
 *
 *   Free Mesh structure mesh and all its attributes
 *******************************************************************/
-void    free_mesh(mesh_t *mesh);
+void            free_mesh(          mesh_t          *mesh);
 
 /*******************************************************************
 *   make_edge
 *
 *   Add to mesh edge between src and dst
 *******************************************************************/
-half_edge_t*   make_edge(mesh_t* mesh, int src, int dst);
+half_edge_t*    make_edge(          mesh_t          *mesh, 
+                                    int             src, 
+                                    int             dst);
 
 /*******************************************************************
 *   connect
 *
 *   Connects destination of a to the origin of b
 *******************************************************************/
-half_edge_t*   connect(mesh_t* mesh, half_edge_t* a, half_edge_t* b);
+half_edge_t*    connect(            mesh_t          *mesh, 
+                                    half_edge_t     *a, 
+                                    half_edge_t     *b);
 
 /*******************************************************************
 *   delete_edge
 *
 *   Deletes edge e
 *******************************************************************/
-void    delete_edge(half_edge_t* e);
+void            delete_edge(        half_edge_t     *e);
 
 /*******************************************************************
 *   splice
@@ -140,7 +155,8 @@ void    delete_edge(half_edge_t* e);
 *   Note: Explained in depth in 
 *   https://graphics.stanford.edu/courses/cs348a-09-fall/Handouts/handout31.pdf
 *******************************************************************/
-void    splice(half_edge_t* a, half_edge_t* b);
+void            splice(             half_edge_t     *a, 
+                                    half_edge_t     *b);
 
 /*******************************************************************
 *   clean_mesh
@@ -148,7 +164,7 @@ void    splice(half_edge_t* a, half_edge_t* b);
 *   Removes from edge list of mesh all edges that were deleted and
 *   free them
 *******************************************************************/
-void    clean_mesh(mesh_t* mesh);
+void            clean_mesh(         mesh_t          *mesh);
 
 /*******************************************************************
 *   right_of
@@ -156,7 +172,9 @@ void    clean_mesh(mesh_t* mesh);
 *   Returns 1 if point with index p_id is at the right of the edge 
 *   e, 0 otherwise
 *******************************************************************/
-int     right_of(mesh_t* mesh, GLsizei p_id, half_edge_t* e);
+int             right_of(           mesh_t          *mesh, 
+                                    GLsizei         p_id, 
+                                    half_edge_t     *e);
 
 /*******************************************************************
 *   left_of
@@ -164,7 +182,9 @@ int     right_of(mesh_t* mesh, GLsizei p_id, half_edge_t* e);
 *   Returns 1 if point with index p_id is at the left of the edge 
 *   e, 0 otherwise
 *******************************************************************/
-int     left_of(mesh_t* mesh, GLsizei p_id, half_edge_t* e);
+int             left_of(            mesh_t          *mesh, 
+                                    GLsizei         p_id, 
+                                    half_edge_t     *e);
 
 /*******************************************************************
 *   in_circle
@@ -173,10 +193,10 @@ int     left_of(mesh_t* mesh, GLsizei p_id, half_edge_t* e);
 *   circle of the triangle whose vertices are points with indices
 *   a_id, b_id and c_id, 0 otherwise
 *******************************************************************/
-int     in_circle( mesh_t *mesh, 
-                   GLsizei a_id, 
-                   GLsizei b_id, 
-                   GLsizei c_id, 
-                   GLsizei d_id);
+int             in_circle(          mesh_t          *mesh, 
+                                    GLsizei         a_id, 
+                                    GLsizei         b_id, 
+                                    GLsizei         c_id, 
+                                    GLsizei         d_id);
 
 #endif

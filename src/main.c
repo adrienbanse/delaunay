@@ -12,10 +12,8 @@
 #include "config.h"
 
 /* 
-TODO :  - VORONOI_SPHERE_MODE : free + faire apparaitre voronoi + order in code
-        - visu help message --> API
-        - clean code
-        - comments in code
+TODO :  - visu help message --> API
+        - config
         - clean main
         - README.md (end) with GIFs
 */
@@ -63,11 +61,11 @@ int main(){
     graph_t *v_graph = (graph_t *)malloc(sizeof(graph_t));
     initialize_graph(v_graph);
     voronoi(v_graph, d_mesh);
-#if VORONOI_FINAL_MODE
-    visualize_mesh_with_dual(d_mesh, v_graph);
-#endif
 #if VORONOI_CIRCLES_MODE
     visualize_with_circles(v_graph, d_mesh);
+#endif
+#if VORONOI_FINAL_MODE
+    visualize_mesh_with_dual(d_mesh, v_graph);
 #endif
     free_graph(v_graph);
 

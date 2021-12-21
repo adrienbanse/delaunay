@@ -5,8 +5,11 @@
 *                   
 * NOTES:            /
 *
-* AUTHORS:          Adrien Banse and Diego de Crombrugghe   
+* AUTHORS:          Adrien Banse <adrien.banse@student.uclouvain.be>
+*                   Diego de Crombrugghe <diego.decrombrugghe@student.uclouvain.be>
+* 
 * DATE:             23 December 2021
+*
 * CONTEXT:          LMECA2170 course project at UCLouvain
 *                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
 *
@@ -55,14 +58,4 @@ GLfloat* find_circum_center(GLfloat p[2], GLfloat q[2], GLfloat r[2]){
     perpendicular_bisector_from_line(q, r, &e, &f, &g);
     GLfloat* circumcenter = line_line_intersection(a, b, c, e, f, g);
     return (circumcenter[0] == __FLT_MAX__ && circumcenter[0] == __FLT_MAX__ ? NULL : circumcenter);
-}
-
-void print_square_matrix(GLsizei **matrix, GLsizei n){
-    GLsizei i, j;
-    for (i = 0; i < n; i++){
-        for (j = 0; j < n; j++){
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
 }

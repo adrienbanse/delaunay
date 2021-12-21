@@ -8,8 +8,11 @@
 *                   equivalent in 
 *                   https://github.com/alexbaryzhikov/triangulation
 *
-* AUTHORS:          Adrien Banse and Diego de Crombrugghe   
+* AUTHORS:          Adrien Banse <adrien.banse@student.uclouvain.be>
+*                   Diego de Crombrugghe <diego.decrombrugghe@student.uclouvain.be>
+*
 * DATE:             23 December 2021
+*
 * CONTEXT:          LMECA2170 course project at UCLouvain
 *                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
 *
@@ -31,7 +34,7 @@
 *   Computes the Delaunay triangulation for the whole set of points
 *   stored in mesh, stores result in mesh
 *******************************************************************/
-void    delaunay(mesh_t* mesh);
+void    delaunay(       mesh_t*         mesh);
 
 /*******************************************************************
 *   triangulate
@@ -41,10 +44,10 @@ void    delaunay(mesh_t* mesh);
 *   and stores in ret the CCW convex hull edge out of the leftmost
 *   vertex and the CQ convex hull edge out of the rightmost vertex
 *******************************************************************/
-void    triangulate( mesh_t* mesh, 
-                     GLsizei begin, 
-                     GLsizei end, 
-                     half_edge_t** ret);
+void    triangulate(    mesh_t*         mesh, 
+                        GLsizei         begin, 
+                        GLsizei         end, 
+                        half_edge_t**   ret);
 
 /*******************************************************************
 *   compare_points
@@ -53,7 +56,7 @@ void    triangulate( mesh_t* mesh,
 *   breaking rule :
 *   a > b if a[0] > b[0] or a[0] == b[0] and a[1] > b[1]
 *******************************************************************/
-int     compare_points( const void *pointer_a, 
-                        const void *pointer_b);
+int     compare_points( const void      *pointer_a, 
+                        const void      *pointer_b);
 
 #endif
