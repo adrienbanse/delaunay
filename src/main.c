@@ -1,3 +1,20 @@
+/*H**********************************************************************
+* FILENAME :        main.c          
+*
+* DESCRIPTION :     Main program
+*       
+* NOTES:            See config.h and README.md for different possibilities
+* 
+* AUTHORS :         Adrien Banse <adrien.banse@student.uclouvain.be>
+*                   Diego de Crombrugghe <diego.decrombrugghe@student.uclouvain.be>
+*
+* DATE :            23 December 2021
+*
+* CONTEXT:          LMECA2170 course project at UCLouvain
+*                   https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php
+*
+*H*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -10,12 +27,6 @@
 #include "delaunay.h"
 #include "voronoi.h"
 #include "config.h"
-
-/* 
-TODO :  - visu help message --> API
-        - clean main
-        - README.md (end) with GIFs
-*/
 
 int main(){
 

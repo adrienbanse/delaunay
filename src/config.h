@@ -23,7 +23,7 @@
 *   EXECUTION PARAMETERS
 *
 *******************************************************************/
-#define N_POINTS                    100          
+#define N_POINTS                    100
 #define UNIFORM                     1
 #define EMST                        1
 #define VORONOI                     1
