@@ -89,7 +89,10 @@ struct mesh_t{
 *         config.h)
 *       - "in_tree" boolean, set to 1 if edge is in EMST (only
 *         changed if EMST is 1, see config.h)
-*       - "t" triangle to which the edge is linked
+*       - "visited" to help constructing the triangles from the 
+*         half edges (see voronoi.h and voronoi.c)
+*       - "t" triangle to which the edge is linked (see voronoi.c
+*         and voronoi.h)
 *******************************************************************/
 struct half_edge_t{
     GLsizei     src;
@@ -98,9 +101,11 @@ struct half_edge_t{
     half_edge_t *prev; /* CW origin iterator */
     half_edge_t *sym; 
     int         deleted;
+
     /* EMST attributes */
     GLfloat     length; 
     int         in_tree;
+
     /* To find triangles */
     int         visited;
     triangle_t  *t;

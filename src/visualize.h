@@ -26,6 +26,7 @@
 #include "voronoi.h"
 #include "config.h"
 #include "inputs.h"
+#include <string.h>
 
 typedef struct history_t    history_t;
 typedef struct circle_t     circle_t;
@@ -146,5 +147,12 @@ void    smooth_circle(              GLfloat     (*circle)[2],
                                     GLfloat     center_x, 
                                     GLfloat     center_y, 
                                     GLfloat     radius);
+
+/*******************************************************************
+*   write_info_txt
+*
+*   Build the information txt for visualizations
+*******************************************************************/                               
+char*   write_info_txt();
 
 #endif

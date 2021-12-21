@@ -13,7 +13,6 @@
 
 /* 
 TODO :  - visu help message --> API
-        - config
         - clean main
         - README.md (end) with GIFs
 */
@@ -31,8 +30,8 @@ int main(){
         error("List of points cannot be malloc'd");
 
 #if UNIFORM
-    float min[2] = {-0.8, -0.8};
-    float max[2] = {0.8, 0.8};
+    GLfloat min[2] = {-0.8, -0.8};
+    GLfloat max[2] = {0.8, 0.8};
     random_uniform_points(point_list, N_POINTS, min, max);
 #else
     random_points(point_list, N_POINTS);

@@ -137,8 +137,15 @@ void visualize_mesh_simple(mesh_t *mesh){
     if (edge_points == NULL)
         error("Edge points cannot be malloc'd");
     bov_window_t* window = bov_window_new(800, 800, TITLE_FINAL_MODE);
+    bov_window_enable_help(window);
+
     bov_points_t *points_draw = bov_points_new(points, n_points, GL_STATIC_DRAW);
 	bov_points_set_color(points_draw, POINT_COLOR);
+
+    char* info_txt_str = write_info_txt();
+    bov_text_t* info_txt= bov_text_new((GLubyte*) info_txt_str, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(info_txt, INFO_POSITION);
+    bov_text_set_space_type(info_txt, PIXEL_SPACE);
 
 	while(!bov_window_should_close(window)){
 
@@ -175,9 +182,13 @@ void visualize_mesh_simple(mesh_t *mesh){
         bov_points_set_width(points_draw, POINT_WIDTH);
 		bov_points_draw(window, points_draw, 0, BOV_TILL_END);
 
-		bov_window_update(window);
-	}
+        bov_text_draw(window, info_txt);
 
+		bov_window_update(window);
+	}   
+
+    bov_text_delete(info_txt);  
+    free(info_txt_str);
 	bov_points_delete(points_draw);
     free(edge_points);
     bov_window_delete(window);
@@ -193,6 +204,8 @@ void visualize_history(mesh_t *mesh){
     read_history(hst);
 
     bov_window_t* window = bov_window_new(800, 800, TITLE_HISTORY_MODE);
+    bov_window_enable_help(window);
+
     GLfloat (*points)[2] = mesh->points;
     double wtime;
     GLsizei i, history_idx, n_edges_history;
@@ -211,9 +224,17 @@ void visualize_history(mesh_t *mesh){
     bov_text_t* done_txt = bov_text_new(DONE_TXT, GL_DYNAMIC_DRAW);
 
     bov_text_set_pos(delaunay_txt, TEXT_POSITION);
+    bov_text_set_space_type(delaunay_txt, PIXEL_SPACE);
     bov_text_set_pos(emst_txt, TEXT_POSITION);
+    bov_text_set_space_type(emst_txt, PIXEL_SPACE);
     bov_text_set_color(emst_txt, EMST_EDGE_COLOR);
     bov_text_set_pos(done_txt, TEXT_POSITION);
+    bov_text_set_space_type(done_txt, PIXEL_SPACE);
+
+    char* info_txt_str = write_info_txt();
+    bov_text_t* info_txt = bov_text_new((GLubyte*) info_txt_str, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(info_txt, INFO_POSITION);
+    bov_text_set_space_type(info_txt, PIXEL_SPACE);
 
     /*  mode = 0 <--> delaunay execution
         mode = 1 <--> EMST execution
@@ -221,19 +242,13 @@ void visualize_history(mesh_t *mesh){
     int mode = 0; 
     while(!bov_window_should_close(window)){
 		wtime = bov_window_get_time(window);
+
         if (wtime > N_SECOND_STEP * hst->length){
             history_idx = hst->length - 1;
             mode = 2;
         }
         else
             history_idx = (GLsizei) (wtime / N_SECOND_STEP) % hst->length;
-
-        if (mode == 0)
-            bov_text_draw(window, delaunay_txt);
-        else if (mode == 1)
-            bov_text_draw(window, emst_txt);
-        else
-            bov_text_draw(window, done_txt);
 
         /*  *************************
             DRAW HISTORY EDGES
@@ -268,12 +283,24 @@ void visualize_history(mesh_t *mesh){
         bov_points_set_width(points_draw, POINT_WIDTH);
 		bov_points_draw(window, points_draw, 0, BOV_TILL_END);
 
+        /* handle modes for text */
+        if (mode == 0)
+            bov_text_draw(window, delaunay_txt);
+        else if (mode == 1)
+            bov_text_draw(window, emst_txt);
+        else
+            bov_text_draw(window, done_txt);
+
+        bov_text_draw(window, info_txt);
+
 		bov_window_update(window);
 	}
 
     bov_text_delete(delaunay_txt);
     bov_text_delete(emst_txt);
     bov_text_delete(done_txt);
+    bov_text_delete(info_txt);
+    free(info_txt_str);
     bov_points_delete(points_draw);
     free(edge_points);
     bov_window_delete(window);
@@ -302,6 +329,16 @@ void visualize_mesh_with_dual(mesh_t *mesh, graph_t *graph){
         error("Dual edge vertices cannot be malloc'd");
 
     bov_window_t* window = bov_window_new(800, 800, TITLE_VORONOI_FINAL_MODE);
+    bov_window_enable_help(window);
+
+    char* info_txt_str = write_info_txt();
+    bov_text_t* info_txt= bov_text_new((GLubyte*) info_txt_str, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(info_txt, INFO_POSITION);
+    bov_text_set_space_type(info_txt, PIXEL_SPACE);
+
+    bov_text_t* disappear_txt = bov_text_new(DISAPPEAR_TXT, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(disappear_txt, DISAPPEAR_POSITION);
+    bov_text_set_space_type(disappear_txt, PIXEL_SPACE);
 
     bov_points_t *points_draw = bov_points_new(points, n_points, GL_STATIC_DRAW);
 	bov_points_set_color(points_draw, POINT_COLOR);
@@ -313,7 +350,6 @@ void visualize_mesh_with_dual(mesh_t *mesh, graph_t *graph){
         counter % 2 != 0 <--> with delaunay edges    */
     unsigned int counter;
 	while(!bov_window_should_close(window)){
-
         /*  *************************
             DRAW DELAUNAY EDGES
             ************************* */
@@ -359,11 +395,18 @@ void visualize_mesh_with_dual(mesh_t *mesh, graph_t *graph){
         bov_points_set_width(points_draw, POINT_WIDTH);
 		bov_points_draw(window, points_draw, 0, BOV_TILL_END);
 
+
+        bov_text_draw(window, info_txt);
+        bov_text_draw(window, disappear_txt);
+
 		bov_window_update(window);
 	}
 
     bov_points_delete(vertices_draw);
 	bov_points_delete(points_draw);
+    bov_text_delete(info_txt);
+    free(info_txt_str);
+    bov_text_delete(disappear_txt);
     free(dual_edge_vertices);
     free(edge_points);
     bov_window_delete(window);
@@ -405,8 +448,32 @@ void visualize_with_circles(graph_t *graph, mesh_t *mesh){
         error("Edge points cannot be malloc'd");
 
     bov_window_t* window = bov_window_new(800, 800, TITLE_VORONOI_CIRCLES_MODE);
+    bov_window_enable_help(window);
+
     bov_points_t *points_draw = bov_points_new(points, n_points, GL_DYNAMIC_DRAW);
 	bov_points_set_color(points_draw, POINT_COLOR);
+
+    char* info_txt_str = write_info_txt();
+    bov_text_t* info_txt= bov_text_new((GLubyte*) info_txt_str, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(info_txt, INFO_POSITION);
+    bov_text_set_space_type(info_txt, PIXEL_SPACE);
+
+    bov_text_t* disappear_txt = bov_text_new(DISAPPEAR_TXT, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(disappear_txt, DISAPPEAR_POSITION);
+    bov_text_set_space_type(disappear_txt, PIXEL_SPACE);
+
+    bov_text_t* current_txt;
+    bov_text_t* circ_txt = bov_text_new(CIRC_TXT, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(circ_txt, TEXT_POSITION);
+    bov_text_set_space_type(circ_txt, PIXEL_SPACE);
+    bov_text_t* voronoi_txt = bov_text_new(VORONOI_TXT, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(voronoi_txt, TEXT_POSITION);
+    bov_text_set_color(voronoi_txt, RED_COLOR);
+    bov_text_set_space_type(voronoi_txt, PIXEL_SPACE);
+    bov_text_t* done_txt = bov_text_new(DONE_TXT, GL_DYNAMIC_DRAW);
+    bov_text_set_pos(done_txt, TEXT_POSITION);
+    bov_text_set_space_type(done_txt, PIXEL_SPACE);
+
 
     double wtime;
 
@@ -421,7 +488,7 @@ void visualize_with_circles(graph_t *graph, mesh_t *mesh){
 
     bov_points_t *circle_points_draw, *circle_center_draw, *dual_edge_draw;
 
-    /*  0                     < wtime < time_for_full_circles   <--> draw circles one at a time
+    /*                      0 < wtime < time_for_full_circles   <--> draw circles one at a time
         time_for_full_circles < wtime < time_for_mode_1         <--> draw all circles
         time_for_mode_1       < wtime < time_for_voronoi        <--> draw voronoi edges one at a time 
         time_for_voronoi      < wtime < time_for_full_voronoi   <--> draw all voronoi edges            */
@@ -434,16 +501,21 @@ void visualize_with_circles(graph_t *graph, mesh_t *mesh){
         counter = bov_window_get_counter(window);
         wtime = bov_window_get_time(window);
         if (wtime > time_for_full_voronoi){
+            current_txt = done_txt;
             n_edges = graph->n_edges;
         }
         else if (wtime > time_for_voronoi)
             n_edges = (GLsizei) ((wtime - time_for_voronoi) / N_SECOND_CIRCLE) % graph->n_edges;
-        else if (wtime > time_for_mode_1)
+        else if (wtime > time_for_mode_1){
+            current_txt = voronoi_txt;
             mode = 1;
+        }
         else if (wtime > time_for_full_circles)
             n_circles = mesh->n_triangles;
-        else
+        else{
+            current_txt = circ_txt;
             n_circles = (GLsizei) (wtime / N_SECOND_CIRCLE) % mesh->n_triangles;
+        }
 
         /*  *************************
             DRAW CIRCLES
@@ -508,8 +580,19 @@ void visualize_with_circles(graph_t *graph, mesh_t *mesh){
         bov_points_set_width(points_draw, POINT_WIDTH);
 		bov_points_draw(window, points_draw, 0, BOV_TILL_END);
 
+        bov_text_draw(window, info_txt);
+        bov_text_draw(window, disappear_txt);
+        bov_text_draw(window, current_txt);
+
 		bov_window_update(window);
 	}
+
+    bov_text_delete(info_txt);
+    free(info_txt_str);
+    bov_text_delete(disappear_txt);
+    bov_text_delete(circ_txt);
+    bov_text_delete(voronoi_txt);
+    bov_text_delete(done_txt);
 
 	bov_points_delete(points_draw);
     free(edge_points);
@@ -526,9 +609,25 @@ void visualize_with_circles(graph_t *graph, mesh_t *mesh){
 void smooth_circle(GLfloat (*circle)[2], GLfloat center_x, GLfloat center_y, GLfloat radius){
     GLsizei i;
     GLfloat theta;
-    for (i=0; i<CIRCLES_RESOLUTION; i++){
+    for (i = 0; i < CIRCLES_RESOLUTION; i++){
         theta = ((float)i / (float)CIRCLES_RESOLUTION) * 2 * M_PI;
         circle[i][0] = center_x + radius * cosf(theta);
         circle[i][1] = center_y + radius * sinf(theta);
     }
+}
+
+char* write_info_txt(){
+    char n_points_str[10];
+    sprintf(n_points_str, "%d", N_POINTS);
+#if UNIFORM
+    char *uniform_str = "\nUniform sampling";
+#else
+    char *uniform_str = "\nNon-uniform sampling";
+#endif
+    char* info_txt = (char *) malloc(100 * sizeof(char));
+    strcat(info_txt, "-- Point set informations --\n");
+    strcat(info_txt, "Number of points: ");
+    strcat(info_txt, n_points_str);
+    strcat(info_txt, uniform_str);
+    return info_txt;
 }
