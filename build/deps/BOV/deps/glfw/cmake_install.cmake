@@ -1,4 +1,4 @@
-# Install script for directory: /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/deps/glfw
+# Install script for directory: /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/deps/BOV/deps/glfw
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/build/deps/BOV/deps/glfw/src/cmake_install.cmake")
+  include("/Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/build/deps/BOV/deps/glfw/src/cmake_install.cmake")
 
 endif()
 

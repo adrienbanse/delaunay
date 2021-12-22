@@ -6,83 +6,83 @@ CMakeFiles/delaunay.dir/src/delaunay.c.o
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/config.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/delaunay.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/delaunay.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/inputs.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/voronoi.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/config.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/delaunay.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/delaunay.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/inputs.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/mesh.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/visualize.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/voronoi.h
 CMakeFiles/delaunay.dir/src/emst.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/config.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/emst.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/emst.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/inputs.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/voronoi.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/config.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/emst.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/emst.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/inputs.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/mesh.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/visualize.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/voronoi.h
 CMakeFiles/delaunay.dir/src/inputs.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/inputs.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/inputs.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/inputs.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/inputs.h
 CMakeFiles/delaunay.dir/src/main.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/config.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/delaunay.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/emst.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/inputs.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/main.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/voronoi.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/config.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/delaunay.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/emst.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/inputs.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/main.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/mesh.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/visualize.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/voronoi.h
 CMakeFiles/delaunay.dir/src/mesh.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/config.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/config.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/mesh.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/mesh.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.h
 CMakeFiles/delaunay.dir/src/utils.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.h
 CMakeFiles/delaunay.dir/src/visualize.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/config.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/inputs.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/visualize.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/voronoi.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/config.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/inputs.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/mesh.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/visualize.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/visualize.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/voronoi.h
 CMakeFiles/delaunay.dir/src/voronoi.c.o
  ../deps/BOV/deps/glad/include/KHR/khrplatform.h
  ../deps/BOV/deps/glad/include/glad/glad.h
  ../deps/BOV/deps/glfw/include/GLFW/glfw3.h
  ../deps/BOV/include/BOV.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/config.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/mesh.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/utils.h
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/voronoi.c
- /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/src/voronoi.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/config.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/mesh.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/utils.h
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/voronoi.c
+ /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/src/voronoi.h

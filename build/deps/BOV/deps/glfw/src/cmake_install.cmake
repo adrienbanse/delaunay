@@ -1,4 +1,4 @@
-# Install script for directory: /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/LMECA2170_project_bis/deps/BOV/deps/glfw/src
+# Install script for directory: /Users/adrienbanse/OneDrive - UCL/MASTER/Q9/LMECA2170/delaunay/deps/BOV/deps/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
