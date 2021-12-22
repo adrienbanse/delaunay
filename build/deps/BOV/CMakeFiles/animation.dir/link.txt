@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/cc -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/animation.dir/examples/animation.c.o  -o examples/animation lib/libbov.a deps/glad/libglad.a deps/glfw/src/libglfw3.a -framework Cocoa -framework IOKit -framework CoreFoundation 
