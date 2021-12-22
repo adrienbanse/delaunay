@@ -1,11 +1,13 @@
 # Delaunay triangulations and extensions
 
-This C program a O(n log(n)) "divide and conquer" implementation of the Delaunay triangulation of a given set of points. It is extended with
+This C program is a O(n log(n)) "divide and conquer" implementation of the Delaunay triangulation of a given set of points. It is extended with
   * an application of the Delaunay triangulation: efficient computation of the Euclidian Minimum Spanning Tree thanks to Kruskal's algorithm, 
-  * an implementation of the derivation of the Voronoi diagram from the Delaunay triangulation, 
-  * visualization algorithms (see Visualization)
+  * a linear time implementation of the derivation of the Voronoi diagram from the Delaunay triangulation, 
+  * four types of visualization (see Visualization)
 
-This program was done as a project for the "LMECA2170 - Numerical Geometry" course at UCLouvain (website: https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php?action=valves).
+This program was written as part of the "LMECA2170 - Numerical Geometry" course project course at UCLouvain (website: https://perso.uclouvain.be/vincent.legat/zouLab/meca2170.php?action=valves).
+
+**Any source of inspiration is explicitely written in the code source.**
 
 ## Structure of the project
 
@@ -19,6 +21,43 @@ The project should contain:
 Each source code file (.c, .h) in the **src** directory comes with a description in the header of the latter.
 
 See [doc/COMPILING.md](doc/COMPILING.md) for a step by step tutorial on how to build the program, see [doc/tutorial.md](doc/tutorial.md) for a step by step tutorial on how to use the BOV library, see [deps/BOV/include/BOV.h](deps/BOV/include/BOV.h) for help on the BOV library functions and see [deps/BOV/examples/](deps/BOV/examples/) for more examples using the BOV library.
+
+## Usage
+
+See [doc/COMPILING.md](doc/COMPILING.md) for a tutorial on how to build the program. Here are some examples of usage, in **src/config.h**.
+
+Test the rapidity of the triangulation:
+```c
+#define EMST                        0
+#define VORONOI                     0
+
+#define FINAL_MODE                  0
+#define HISTORY_MODE                0  
+#define VORONOI_FINAL_MODE          0
+#define VORONOI_CIRCLES_MODE        0
+```
+
+See all the visualizations (see Visualization):
+```c
+#define EMST                        1
+#define VORONOI                     1
+
+#define FINAL_MODE                  1
+#define HISTORY_MODE                1  
+#define VORONOI_FINAL_MODE          1
+#define VORONOI_CIRCLES_MODE        1
+```
+
+Compute and see final results of Delaunay triangulation and Voronoi diagram (see Visualization):
+```c
+#define EMST                        0
+#define VORONOI                     1
+
+#define FINAL_MODE                  1
+#define HISTORY_MODE                0  
+#define VORONOI_FINAL_MODE          1
+#define VORONOI_CIRCLES_MODE        0
+```
 
 ## Visualization
 
