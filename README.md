@@ -87,6 +87,15 @@ Shows the computation of the vertices of the Voronoi diagram (the circumcenters 
 
 <img src="https://user-images.githubusercontent.com/45042779/146960552-1a56c91e-945a-4055-999c-5e2f22819eca.gif" width="800" height="800"> 
 
+## Complexity
+
+The divide-and-conquer is in O(n log(n)), and so are both extensions.
+
+![time_1](https://user-images.githubusercontent.com/45042779/148994569-c8272dc7-9190-45bf-b608-3d30dc43176f.png)
+
+Suppose a Delaunay triangulation is given, applying Kruskal's algorithm to it requires O(n log(n)) operations since there are O(n) edges in the triangulation, and finding the Voronoi triangulation takes O(n) operations. 
+
+![time_2](https://user-images.githubusercontent.com/45042779/148994593-bb9ea7e1-26e8-4c27-9d61-4e33039c247d.png)
 
 ## Parameters
 
