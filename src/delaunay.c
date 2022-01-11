@@ -88,7 +88,7 @@ void triangulate(mesh_t *mesh, GLsizei begin, GLsizei end, half_edge_t **res){
     if (cont_left == NULL)
         error("Left container in triangulate cannot be malloc'd");
     half_edge_t **cont_right = (half_edge_t **)malloc(2 * sizeof(half_edge_t *));
-    if (cont_left == NULL)
+    if (cont_right == NULL)
         error("Right container in triangulate cannot be malloc'd");
 
     /* divide and conquer */
