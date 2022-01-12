@@ -95,7 +95,7 @@ The divide-and-conquer is in O(n log(n)), and so are both extensions.
 
 Suppose a Delaunay triangulation is given, applying Kruskal's algorithm to it requires O(n log(n)) operations since there are O(n) edges in the triangulation, and finding the Voronoi triangulation takes O(n) operations. 
 
-![time_2](https://user-images.githubusercontent.com/45042779/148994593-bb9ea7e1-26e8-4c27-9d61-4e33039c247d.png)
+![time_2](https://user-images.githubusercontent.com/45042779/149117217-57e89127-6b9b-4688-a5d2-d688886e6625.png)
 
 ## Parameters
 
